@@ -1,0 +1,6 @@
+(sym_lib_table
+  (lib (name "P4SMA13")(type "Legacy")(uri "${KICAD6_3RD_PARTY}/P4SMA13/P4SMA13.lib")(options "")(descr ""))
+  (lib (name "B1047AS-331M_P3")(type "Legacy")(uri "${KICAD6_3RD_PARTY}/B1047AS-331M_P3/B1047AS-331M_P3.lib")(options "")(descr ""))
+  (lib (name "SW1437565-9")(type "Legacy")(uri "${KICAD6_3RD_PARTY}/SW1437565-9/SW1437565-9.lib")(options "")(descr ""))
+  (lib (name "TL1015AF160QG")(type "Legacy")(uri "${KICAD6_3RD_PARTY}/TL1015AF160QG/TL1015AF160QG.lib")(options "")(descr ""))
+)

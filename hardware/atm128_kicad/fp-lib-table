@@ -1,0 +1,7 @@
+(fp_lib_table
+  (lib (name "P4SMA13")(type "KiCad")(uri "${KICAD6_3RD_PARTY}/P4SMA13")(options "")(descr ""))
+  (lib (name "SW1437565-9")(type "KiCad")(uri "${KICAD6_3RD_PARTY}/SW1437565-9")(options "")(descr ""))
+  (lib (name "B1047AS-331M_P3")(type "KiCad")(uri "${KICAD6_3RD_PARTY}/B1047AS-331M_P3")(options "")(descr ""))
+  (lib (name "TL1015AF160QG")(type "KiCad")(uri "${KICAD6_3RD_PARTY}/TL1015AF160QG")(options "")(descr ""))
+  (lib (name "atm128")(type "KiCad")(uri "C:/Users/khueh/Documents/KiCad/Projects/atm128/atm128")(options "")(descr ""))
+)
