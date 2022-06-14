@@ -50,3 +50,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+hardware/atm128_kicad/atm128-backups
