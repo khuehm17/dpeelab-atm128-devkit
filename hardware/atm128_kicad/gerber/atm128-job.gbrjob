@@ -5,13 +5,13 @@
       "Application": "Pcbnew",
       "Version": "(6.0.5)"
     },
-    "CreationDate": "2022-06-14T16:15:44+07:00"
+    "CreationDate": "2022-07-19T14:03:45+07:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
       "Name": "atm128",
       "GUID": "61746d31-3238-42e6-9b69-6361645f7063",
-      "Revision": "0.0"
+      "Revision": "1.0"
     },
     "Size": {
       "X": 76.3345,
@@ -28,8 +28,8 @@
       "PadToTrack": 0.2,
       "TrackToTrack": 0.2,
       "MinLineWidth": 0.2,
-      "TrackToRegion": 0.508,
-      "RegionToRegion": 0.508
+      "TrackToRegion": 0.381,
+      "RegionToRegion": 0.381
     }
   ],
   "FilesAttributes": [
