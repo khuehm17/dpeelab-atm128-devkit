@@ -52,3 +52,5 @@ Mkfile.old
 dkms.conf
 
 hardware/atm128_kicad/atm128-backups
+
+firmware/out-of-the-box-demo/Release
