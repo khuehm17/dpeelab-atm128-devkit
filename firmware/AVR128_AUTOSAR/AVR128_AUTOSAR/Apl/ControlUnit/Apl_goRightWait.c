@@ -18,6 +18,7 @@ void Apl_mainGoRightWait_EvJob(uint16 currentState, void* para)
 
 void Apl_mainGoRightWait_entry(uint16 currentState, void* para)
 {
+	
 	return;
 }
 

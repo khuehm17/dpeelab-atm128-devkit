@@ -66,12 +66,12 @@ void Apl_gpioChangeState(uint16 currenstate, void* para)
 	
 	u2a_currentState = currenstate;
 	
-	if (STATE_MAXNUMBER <= currenstate) {
+	if (NULL != Apl_stateMachine[u2a_currentState].evtExit) {
 		Apl_stateMachine[currenstate].evtExit(u2a_currentState, NULL);
 	}
 	
 	
-	if (2 < u2a_currentState) {
+	if (STATE_MAXNUMBER < u2a_currentState) {
 		u2a_currentState = APL_TASKLIST_IDLE;
 	}
 	
@@ -95,47 +95,47 @@ void Apl_setEvt(uint8 evtJob, void* para) {
 	{
 		case APL_EXECUTE_EVENT_GOSTRAIGHT:
 		{
-			Controller = Apl_stateMachine->evtGoStraight;
+			Controller = Apl_stateMachine[CurrentSts].evtGoStraight;
 			break;
 		}
 		case APL_EXECUTE_EVENT_WAITGOSTRAIGHT:
 		{
-			Controller = Apl_stateMachine->evtWaitGoStraight;
+			Controller = Apl_stateMachine[CurrentSts].evtWaitGoStraight;
 			break;
 		}
 		case APL_EXECUTE_EVENT_GOLEFT:
 		{
-			Controller = Apl_stateMachine->evtGoLeft;
+			Controller = Apl_stateMachine[CurrentSts].evtGoLeft;
 			break;
 		}
 		case APL_EXECUTE_EVENT_WAITGOLEFT:
 		{
-			Controller = Apl_stateMachine->evtWaitGoLeft;
+			Controller = Apl_stateMachine[CurrentSts].evtWaitGoLeft;
 			break;
 		}
 		case APL_EXECUTE_EVENT_GORIGHT:
 		{
-			Controller = Apl_stateMachine->evtGoRight;
+			Controller = Apl_stateMachine[CurrentSts].evtGoRight;
 			break;
 		}
 		case APL_EXECUTE_EVENT_WAITGORIGHT:
 		{
-			Controller = Apl_stateMachine->evtWaitGoRigth;
+			Controller = Apl_stateMachine[CurrentSts].evtWaitGoRigth;
 			break;
 		}
-		case APL_EXECUTE_EVENT_JOB:
+		case APL_EXECUTE_EVENT_COM:
 		{
-			Controller = Apl_stateMachine->evtJob;
+			Controller = Apl_stateMachine[CurrentSts].evtJob;
 			break;
 		}
 		case APL_EXECUTE_EVENT_ENTRY:
 		{
-			Controller = Apl_stateMachine->evtEntry;
+			Controller = Apl_stateMachine[CurrentSts].evtEntry;
 			break;
 		}
 		case APL_EXECUTE_EVENT_EXIT:
 		{
-			Controller = Apl_stateMachine->evtExit;
+			Controller = Apl_stateMachine[CurrentSts].evtExit;
 			break;
 		}
 		default:

@@ -26,20 +26,30 @@
 #define APL_EXECUTE_EVENT_WAITGOLEFT		3u
 #define APL_EXECUTE_EVENT_GORIGHT			4u
 #define APL_EXECUTE_EVENT_WAITGORIGHT		5u
-#define APL_EXECUTE_EVENT_JOB				6u
+#define APL_EXECUTE_EVENT_COM				6u
 #define APL_EXECUTE_EVENT_ENTRY				7u
 #define APL_EXECUTE_EVENT_EXIT				8u
+
+#define PMW_CLEAR 0u
 
 typedef struct {
     uint8 ChanelA;
     uint8 chanelB;
     uint16 PMW;
+	uint8 flag;
 }ControllerStr;
+
+typedef enum {
+	CHANEL_CLEAR = 0,
+	CHANEL_SET
+}chanelControl;
 
 const uint8 Apl_BufferRead[MAX_BLOCK_READ];
 const uint8 Apl_BufferWrite[MAX_BLOCK_WRITE];
-ControllerStr ControllerUnit;
+ControllerStr *ControllerUnit;
 
 uint8 Apl_gpioCurrentSts;
+uint8 Apl_Counter;
+uint8 Apl_FlagCom;
 
 #endif /* PUBLIC_VARIABLE_H_ */

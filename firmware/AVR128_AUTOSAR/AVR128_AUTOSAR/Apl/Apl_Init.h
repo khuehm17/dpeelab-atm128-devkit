@@ -15,6 +15,7 @@
 #include "Apl_mainControlTsk.h"
 
 void Apl_Init(void);
+void Apl_controllerUnitInit(void);
 void Apl_networkInit(void);
 void Apl_mainTaskStateInit(void);
 

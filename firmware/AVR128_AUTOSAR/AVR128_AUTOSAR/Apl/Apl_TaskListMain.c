@@ -6,8 +6,17 @@
  */
 
 #include <Apl_TaskListMain.h>
+#include "Apl_Public_Variable.h"
 
 void Apl_mainTask(void) {
 	
 	Apl_gpioChangeState(Apl_gpioCurrentSts, NULL);
+	
+	if (ARG_TRUE == ControllerUnit->flag) {
+		Apl_setEvt(APL_EXECUTE_EVENT_GOSTRAIGHT, NULL);
+		ControllerUnit->flag = ARG_FALSE;
+	}
+	
+	Apl_setEvt(APL_EXECUTE_EVENT_COM, NULL);
 }
+

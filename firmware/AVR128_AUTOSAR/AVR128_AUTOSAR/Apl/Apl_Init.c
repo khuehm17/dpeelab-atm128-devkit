@@ -25,11 +25,25 @@ void Apl_networkInit(void)
 	return;	
 }
 
+void Apl_controllerUnitInit(void)
+{
+	memset((void*) ControllerUnit, 0, sizeof(ControllerStr));
+	ControllerUnit->ChanelA = CHANEL_CLEAR;
+	ControllerUnit->chanelB = CHANEL_CLEAR;
+	ControllerUnit->PMW = PMW_CLEAR;
+	ControllerUnit->flag = ARG_FALSE;
+	
+	Apl_FlagCom = E_NOTOK;
+	
+	return;
+}
+
 void Apl_Init(void)
 {
 	BSW_driverInit();
 	Apl_networkInit();
 	Apl_mainTaskStateInit();
+	Apl_controllerUnitInit();
 	
 	return;
 }

@@ -10,6 +10,7 @@
 #define APL_GOSTRAIGHTWAIT_H_
 
 #include "Std_Type.h"
+#include "Bsw.h"
 
 
 void Apl_mainGoStraightWait_EvEnd(uint16 currentState, void* para);
