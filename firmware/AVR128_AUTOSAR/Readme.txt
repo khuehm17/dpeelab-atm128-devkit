@@ -1,6 +1,6 @@
 Version Information:
 
-AVR_128_1.0.0: Initialize AVR 128 platform following to AUTOSAR
+August 6th, 2022: AVR_128_1.0.0: Initialize AVR 128 platform following to AUTOSAR
   + Crypto:
      + AES 128 bits: ECB and CBC mode
   + MCAL:
@@ -10,3 +10,4 @@ AVR_128_1.0.0: Initialize AVR 128 platform following to AUTOSAR
   + Application:
      + LCD driver
 	 + LCD i2c driver
+	 + Controller unit

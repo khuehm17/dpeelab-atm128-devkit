@@ -13,7 +13,7 @@
 #include <user_config.h>
 #include <Apl_mainControlTsk.h>
 
-#define STATE_MAXNUMBER				3u
+#define STATE_MAXNUMBER				4u
 
 #define APL_TASKLIST_IDLE			0u
 #define APL_TASKLIST_GOSTRAIGHT		1u

@@ -7,16 +7,18 @@
 
 #include <Apl_mainControlTsk.h>
 #include "Apl_MainTskIdle.h"
-#include <Apl_uartFFSend.h>
+#include <Apl_goLeftWait.h>
+#include <Apl_goRightWait.h>
+#include <Apl_goStraightWait.h>
 
-static const DC_Controller_sts Apl_stateMachine[2] = 
+static const DC_Controller_sts Apl_stateMachine[STATE_MAXNUMBER] = 
 {
 	{
-		&Apl_mainIdle_EvReqWrite,
+		&Apl_mainIdle_EvReqGoStraight,
 	    NULL,
-		&Apl_mainIdle_EvReqErase,
+		&Apl_mainIdle_EvReqGoLeft,
 		NULL,
-		&Apl_mainIdle_EvReqVerify,
+		&Apl_mainIdle_EvReqGoRight,
 		NULL,
 		&Apl_mainIdle_EvJob,
 		&Apl_mainIdle_entry,
@@ -24,14 +26,36 @@ static const DC_Controller_sts Apl_stateMachine[2] =
 	},
 	{
 		NULL,
-		&Apl_mainWriteWait_EvEndWrite,
+		&Apl_mainGoStraightWait_EvEnd,
 		NULL,
 		NULL,
 		NULL,
 		NULL,
-		&Apl_mainWriteWait_EvJob,
-		&Apl_mainWriteWait_entry,
-		&Apl_mainWriteWait_exit
+		&Apl_mainGoStraightWait_EvJob,
+		&Apl_mainGoStraightWait_entry,
+		&Apl_mainGoStraightWait_exit
+	},
+	{
+		NULL,
+		NULL,
+		NULL,
+		Apl_mainGoLeftWait_EvEnd,
+		NULL,
+		NULL,
+		&Apl_mainGoLeftWait_EvJob,
+		&Apl_mainGoLeftWait_entry,
+		&Apl_mainGoLeftWait_exit
+	},
+	{
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		Apl_mainGoStraightWait_EvEnd,
+		&Apl_mainGoStraightWait_EvJob,
+		&Apl_mainGoStraightWait_entry,
+		&Apl_mainGoStraightWait_exit
 	}
 };
 

@@ -10,6 +10,12 @@ Apl\Apl_MainTskIdle.c
 
 Apl\Apl_TaskListMain.c
 
+Apl\ControlUnit\Apl_goLeftWait.c
+
+Apl\ControlUnit\Apl_goRightWait.c
+
+Apl\ControlUnit\Apl_goStraightWait.c
+
 Apl\Crypto\aes128.c
 
 Apl\Crypto\AES_CBC_Mode.c
