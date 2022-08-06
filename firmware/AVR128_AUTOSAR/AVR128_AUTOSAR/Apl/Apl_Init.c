@@ -12,8 +12,8 @@
 
 void Apl_mainTaskStateInit(void)
 {
-	Apl_gpioCurrentSts = APL_TASKLISTIDLE;
-	Apl_setEvt(Apl_gpioCurrentSts);
+	Apl_gpioCurrentSts = APL_TASKLIST_IDLE;
+	Apl_setEvt(APL_EXECUTE_EVENT_ENTRY, NULL);
 	
 	return;
 }

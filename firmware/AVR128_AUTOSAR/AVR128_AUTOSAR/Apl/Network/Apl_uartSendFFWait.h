@@ -11,10 +11,10 @@
 
 #include <Std_Type.h>
 
-void Apl_mainFFSendWaitExecuteEvjob(uint16 currentState);
-void Apl_mainFFSendWaitCompEvjob(uint16 currentState);
-void Apl_mainFFSendWaitEntryEvjob(uint16 currentState);
-void Apl_mainFFSendWaitTimeOutEvjob(uint16 currentState);
+void Apl_mainFFSendWaitExecuteEvjob(uint16 currentState, void* para);
+void Apl_mainFFSendWaitCompEvjob(uint16 currentState, void* para);
+void Apl_mainFFSendWaitEntryEvjob(uint16 currentState, void* para);
+void Apl_mainFFSendWaitTimeOutEvjob(uint16 currentState, void* para);
 
 
 #endif /* APL_UARTSENDFFWAIT_H_ */

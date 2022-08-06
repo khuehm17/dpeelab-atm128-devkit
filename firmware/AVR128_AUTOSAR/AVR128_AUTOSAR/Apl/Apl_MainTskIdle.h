@@ -13,12 +13,12 @@
 #include <Std_Type.h>
 #include <Bsw.h>
 
-void Apl_mainIdle_EvReqWrite(uint16 currentState);
-void Apl_mainIdle_EvReqErase(uint16 currentState);
-void Apl_mainIdle_EvReqVerify(uint16 currentState);
-void Apl_mainIdle_EvJob(uint16 currentState);
-void Apl_mainIdle_entry(uint16 currentState);
-void Apl_mainIdle_exit(uint16 currentState);
+void Apl_mainIdle_EvReqWrite(uint16 currentState, void* para);
+void Apl_mainIdle_EvReqErase(uint16 currentState, void* para);
+void Apl_mainIdle_EvReqVerify(uint16 currentState, void* para);
+void Apl_mainIdle_EvJob(uint16 currentState, void* para);
+void Apl_mainIdle_entry(uint16 currentState, void* para);
+void Apl_mainIdle_exit(uint16 currentState, void* para);
 
 
 

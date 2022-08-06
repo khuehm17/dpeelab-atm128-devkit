@@ -9,5 +9,5 @@
 
 void Apl_mainTask(void) {
 	
-	Apl_gpioChangeState(Apl_gpioCurrentSts);
+	Apl_gpioChangeState(Apl_gpioCurrentSts, NULL);
 }

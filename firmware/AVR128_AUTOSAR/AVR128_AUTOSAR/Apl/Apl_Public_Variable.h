@@ -11,20 +11,34 @@
 
 #include <Std_Type.h>
 #include <user_config.h>
+#include <Apl_mainControlTsk.h>
 
 #define STATE_MAXNUMBER				3u
 
-#define APL_TASKLISTIDLE			0u
-#define APL_TASKLISTFFSEND			1u
-#define APL_TASKLISTFFWAIT			2u
+#define APL_TASKLIST_IDLE			0u
+#define APL_TASKLIST_GOSTRAIGHT		1u
+#define APL_TASKLIST_GOLEFT			2u
+#define APL_TASKLIST_GORIGHT		3u
 
-#define APL_EXECUTE_EVENT_JOB		0u
-#define APL_EXECUTE_COMP_JOB		1u
-#define APL_EXECUTE_ENTRY_JOB		2u
-#define APL_EXECUTE_TIMEOUT_JOB		2u
+#define APL_EXECUTE_EVENT_GOSTRAIGHT		0u
+#define APL_EXECUTE_EVENT_WAITGOSTRAIGHT	1u
+#define APL_EXECUTE_EVENT_GOLEFT			2u
+#define APL_EXECUTE_EVENT_WAITGOLEFT		3u
+#define APL_EXECUTE_EVENT_GORIGHT			4u
+#define APL_EXECUTE_EVENT_WAITGORIGHT		5u
+#define APL_EXECUTE_EVENT_JOB				6u
+#define APL_EXECUTE_EVENT_ENTRY				7u
+#define APL_EXECUTE_EVENT_EXIT				8u
+
+typedef struct {
+    uint8 ChanelA;
+    uint8 chanelB;
+    uint16 PMW;
+}ControllerStr;
 
 const uint8 Apl_BufferRead[MAX_BLOCK_READ];
 const uint8 Apl_BufferWrite[MAX_BLOCK_WRITE];
+ControllerStr ControllerUnit;
 
 uint8 Apl_gpioCurrentSts;
 

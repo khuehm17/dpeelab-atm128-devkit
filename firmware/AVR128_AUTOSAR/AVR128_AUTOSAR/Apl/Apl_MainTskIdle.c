@@ -7,29 +7,29 @@
 
 #include "Apl_MainTskIdle.h"
 
-void Apl_mainIdle_EvReqWrite(uint16 currentState)
+void Apl_mainIdle_EvReqWrite(uint16 currentState, void* para)
 {
 
 	return;	
 }
 
-void Apl_mainIdle_EvReqErase(uint16 currentState)
+void Apl_mainIdle_EvReqErase(uint16 currentState, void* para)
 {
 	return;
 }
 
-void Apl_mainIdle_EvReqVerify(uint16 currentState)
+void Apl_mainIdle_EvReqVerify(uint16 currentState, void* para)
 {
 	return;
 }
 
-void Apl_mainIdle_EvJob(uint16 currentState)
+void Apl_mainIdle_EvJob(uint16 currentState, void* para)
 {
 	return;
 }
 
 
-void Apl_mainIdle_entry(uint16 currentState)
+void Apl_mainIdle_entry(uint16 currentState, void* para)
 {
 	clr_LCD();
 	move_LCD(0,0);
@@ -44,7 +44,7 @@ void Apl_mainIdle_entry(uint16 currentState)
 	return;
 }
 
-void Apl_mainIdle_exit(uint16 currentState)
+void Apl_mainIdle_exit(uint16 currentState, void* para)
 {
 	return;
 }

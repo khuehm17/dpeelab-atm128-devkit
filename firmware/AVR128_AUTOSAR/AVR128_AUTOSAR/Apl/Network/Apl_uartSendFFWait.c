@@ -7,22 +7,22 @@
 
 #include "Apl_uartSendFFWait.h"
 
-void Apl_mainFFSendWaitExecuteEvjob(uint16 currentState)
+void Apl_mainFFSendWaitExecuteEvjob(uint16 currentState, void* para)
 {
 	return;
 }
 
-void Apl_mainFFSendWaitCompEvjob(uint16 currentState)
+void Apl_mainFFSendWaitCompEvjob(uint16 currentState, void* para)
 {
 	return;
 }
 
-void Apl_mainFFSendWaitEntryEvjob(uint16 currentState)
+void Apl_mainFFSendWaitEntryEvjob(uint16 currentState, void* para)
 {
 	return;
 }
 
-void Apl_mainFFSendWaitTimeOutEvjob(uint16 currentState)
+void Apl_mainFFSendWaitTimeOutEvjob(uint16 currentState, void* para)
 {
 	return;
 }

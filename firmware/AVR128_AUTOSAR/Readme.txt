@@ -1,6 +1,6 @@
 Version Information:
 
-AVR_128_1.0.0: Initialize AVR 128 platform follwoing to AUTOSAR
+AVR_128_1.0.0: Initialize AVR 128 platform following to AUTOSAR
   + Crypto:
      + AES 128 bits: ECB and CBC mode
   + MCAL:
