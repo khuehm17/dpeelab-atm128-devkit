@@ -111,57 +111,57 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
       <AvrGcc>
-  <avrgcc.common.Device>-mmcu=atmega128 -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128"</avrgcc.common.Device>
-  <avrgcc.common.optimization.RelaxBranches>True</avrgcc.common.optimization.RelaxBranches>
-  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
-  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
-  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
-  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
-  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
-  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
-  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
-  <avrgcc.compiler.symbols.DefSymbols>
-    <ListValues>
-      <Value>DEBUG</Value>
-    </ListValues>
-  </avrgcc.compiler.symbols.DefSymbols>
-  <avrgcc.compiler.directories.IncludePaths>
-    <ListValues>
-      <Value>../MCAL</Value>
-      <Value>../Platform</Value>
-      <Value>..</Value>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
-      <Value>../Apl</Value>
-      <Value>../user</Value>
-      <Value>../Lib</Value>
-      <Value>../Apl/Crypto</Value>
-      <Value>../Apl/Network</Value>
-      <Value>../Apl/ControlUnit</Value>
-      <Value>../microsar/BswM</Value>
-      <Value>../microsar</Value>
-      <Value>../microsar/OS</Value>
-      <Value>../microsar/UART</Value>
-      <Value>../Apl/Peripheral</Value>
-      <Value>../Apl/Com</Value>
-    </ListValues>
-  </avrgcc.compiler.directories.IncludePaths>
-  <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
-  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
-  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
-  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
-  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
-  <avrgcc.linker.libraries.Libraries>
-    <ListValues>
-      <Value>libm</Value>
-    </ListValues>
-  </avrgcc.linker.libraries.Libraries>
-  <avrgcc.assembler.general.IncludePaths>
-    <ListValues>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
-    </ListValues>
-  </avrgcc.assembler.general.IncludePaths>
-  <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
-</AvrGcc>
+        <avrgcc.common.Device>-mmcu=atmega128 -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128"</avrgcc.common.Device>
+        <avrgcc.common.optimization.RelaxBranches>True</avrgcc.common.optimization.RelaxBranches>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>DEBUG</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>../MCAL</Value>
+            <Value>../Platform</Value>
+            <Value>..</Value>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+            <Value>../Apl</Value>
+            <Value>../user</Value>
+            <Value>../Lib</Value>
+            <Value>../Apl/Crypto</Value>
+            <Value>../Apl/Network</Value>
+            <Value>../Apl/ControlUnit</Value>
+            <Value>../microsar/BswM</Value>
+            <Value>../microsar</Value>
+            <Value>../microsar/OS</Value>
+            <Value>../microsar/UART</Value>
+            <Value>../Apl/Peripheral</Value>
+            <Value>../Apl/Com</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.assembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+          </ListValues>
+        </avrgcc.assembler.general.IncludePaths>
+        <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+      </AvrGcc>
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
@@ -169,21 +169,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apl\Apl_Init.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apl\Apl_mainControlTsk.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apl\Apl_mainControlTsk.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apl\Apl_MainTskIdle.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apl\Apl_MainTskIdle.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apl\Apl_Public_Variable.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apl\Apl_TaskListMain.c">
@@ -214,6 +199,21 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apl\ControlUnit\Apl_goStraightWait.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Apl\ControlUnit\Apl_mainControlTsk.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Apl\ControlUnit\Apl_mainControlTsk.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Apl\ControlUnit\Apl_MainTskIdle.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Apl\ControlUnit\Apl_MainTskIdle.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Apl\ControlUnit\Apl_Public_Variable.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apl\Crypto\aes128.c">
@@ -324,6 +324,45 @@
     <Compile Include="Platform\Std_Type.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="udsdiag\wModeUser\udsmodeUserUserCfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="udsdiag\wModeUser\UDS_wModeUser_SID10.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="udsdiag\wModeUser\UDS_wModeUser_SID10.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="udsdiag\wModeUser\UDS_wModeUser_SID11.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="udsdiag\wModeUser\UDS_wModeUser_SID11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="udsdiag\wModeUser\UDS_wModeUser_SID14.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="udsdiag\wModeUser\UDS_wModeUser_SID14.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="udsdiag\wModeUser\UDS_wModeUser_SID28.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="udsdiag\wModeUser\UDS_wModeUser_SID28.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="udsdiag\wModeUser\UDS_wModeUser_SID31.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="udsdiag\wModeUser\UDS_wModeUser_SID31.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="udsdiag\wModeUser\UDS_wModeUser_SID85.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="udsdiag\wModeUser\UDS_wModeUser_SID85.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="user\user_config.h">
       <SubType>compile</SubType>
     </Compile>
@@ -349,6 +388,12 @@
     <Folder Include="Apl" />
     <Folder Include="Lib" />
     <Folder Include="df" />
+    <Folder Include="udsdiag" />
+    <Folder Include="udsdiag\DigSyscfg" />
+    <Folder Include="udsdiag\incStd" />
+    <Folder Include="udsdiag\wModeUser" />
+    <Folder Include="udsdiag\udsNetworkUser" />
+    <Folder Include="udsdiag\udsNetwork" />
     <Folder Include="user" />
     <Folder Include="Platform" />
   </ItemGroup>

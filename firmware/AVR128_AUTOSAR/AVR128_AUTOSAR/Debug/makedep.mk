@@ -4,10 +4,6 @@
 
 Apl\Apl_Init.c
 
-Apl\Apl_mainControlTsk.c
-
-Apl\Apl_MainTskIdle.c
-
 Apl\Apl_TaskListMain.c
 
 Apl\Com\floatToString.c
@@ -17,6 +13,10 @@ Apl\ControlUnit\Apl_goLeftWait.c
 Apl\ControlUnit\Apl_goRightWait.c
 
 Apl\ControlUnit\Apl_goStraightWait.c
+
+Apl\ControlUnit\Apl_mainControlTsk.c
+
+Apl\ControlUnit\Apl_MainTskIdle.c
 
 Apl\Crypto\aes128.c
 
@@ -51,4 +51,16 @@ MCAL\spi.c
 MCAL\UART.c
 
 microsar\UART\BSW_UART.c
+
+udsdiag\wModeUser\UDS_wModeUser_SID10.c
+
+udsdiag\wModeUser\UDS_wModeUser_SID11.c
+
+udsdiag\wModeUser\UDS_wModeUser_SID14.c
+
+udsdiag\wModeUser\UDS_wModeUser_SID28.c
+
+udsdiag\wModeUser\UDS_wModeUser_SID31.c
+
+udsdiag\wModeUser\UDS_wModeUser_SID85.c
 

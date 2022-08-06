@@ -53,6 +53,12 @@ SUBDIRS :=  \
 ../Apl \
 ../Lib \
 ../df \
+../udsdiag \
+../udsdiag/DigSyscfg \
+../udsdiag/incStd \
+../udsdiag/wModeUser \
+../udsdiag/udsNetworkUser \
+../udsdiag/udsNetwork \
 ../user \
 ../Platform
 
@@ -60,13 +66,13 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../Apl/Apl_Init.c \
-../Apl/Apl_mainControlTsk.c \
-../Apl/Apl_MainTskIdle.c \
 ../Apl/Apl_TaskListMain.c \
 ../Apl/Com/floatToString.c \
 ../Apl/ControlUnit/Apl_goLeftWait.c \
 ../Apl/ControlUnit/Apl_goRightWait.c \
 ../Apl/ControlUnit/Apl_goStraightWait.c \
+../Apl/ControlUnit/Apl_mainControlTsk.c \
+../Apl/ControlUnit/Apl_MainTskIdle.c \
 ../Apl/Crypto/aes128.c \
 ../Apl/Crypto/AES_CBC_Mode.c \
 ../Apl/Crypto/AES_ECB_Mode.c \
@@ -83,7 +89,13 @@ C_SRCS +=  \
 ../MCAL/i2c.c \
 ../MCAL/spi.c \
 ../MCAL/UART.c \
-../microsar/UART/BSW_UART.c
+../microsar/UART/BSW_UART.c \
+../udsdiag/wModeUser/UDS_wModeUser_SID10.c \
+../udsdiag/wModeUser/UDS_wModeUser_SID11.c \
+../udsdiag/wModeUser/UDS_wModeUser_SID14.c \
+../udsdiag/wModeUser/UDS_wModeUser_SID28.c \
+../udsdiag/wModeUser/UDS_wModeUser_SID31.c \
+../udsdiag/wModeUser/UDS_wModeUser_SID85.c
 
 
 PREPROCESSING_SRCS += 
@@ -94,13 +106,13 @@ ASM_SRCS +=
 
 OBJS +=  \
 Apl/Apl_Init.o \
-Apl/Apl_mainControlTsk.o \
-Apl/Apl_MainTskIdle.o \
 Apl/Apl_TaskListMain.o \
 Apl/Com/floatToString.o \
 Apl/ControlUnit/Apl_goLeftWait.o \
 Apl/ControlUnit/Apl_goRightWait.o \
 Apl/ControlUnit/Apl_goStraightWait.o \
+Apl/ControlUnit/Apl_mainControlTsk.o \
+Apl/ControlUnit/Apl_MainTskIdle.o \
 Apl/Crypto/aes128.o \
 Apl/Crypto/AES_CBC_Mode.o \
 Apl/Crypto/AES_ECB_Mode.o \
@@ -117,17 +129,23 @@ MCAL/gpt.o \
 MCAL/i2c.o \
 MCAL/spi.o \
 MCAL/UART.o \
-microsar/UART/BSW_UART.o
+microsar/UART/BSW_UART.o \
+udsdiag/wModeUser/UDS_wModeUser_SID10.o \
+udsdiag/wModeUser/UDS_wModeUser_SID11.o \
+udsdiag/wModeUser/UDS_wModeUser_SID14.o \
+udsdiag/wModeUser/UDS_wModeUser_SID28.o \
+udsdiag/wModeUser/UDS_wModeUser_SID31.o \
+udsdiag/wModeUser/UDS_wModeUser_SID85.o
 
 OBJS_AS_ARGS +=  \
 Apl/Apl_Init.o \
-Apl/Apl_mainControlTsk.o \
-Apl/Apl_MainTskIdle.o \
 Apl/Apl_TaskListMain.o \
 Apl/Com/floatToString.o \
 Apl/ControlUnit/Apl_goLeftWait.o \
 Apl/ControlUnit/Apl_goRightWait.o \
 Apl/ControlUnit/Apl_goStraightWait.o \
+Apl/ControlUnit/Apl_mainControlTsk.o \
+Apl/ControlUnit/Apl_MainTskIdle.o \
 Apl/Crypto/aes128.o \
 Apl/Crypto/AES_CBC_Mode.o \
 Apl/Crypto/AES_ECB_Mode.o \
@@ -144,17 +162,23 @@ MCAL/gpt.o \
 MCAL/i2c.o \
 MCAL/spi.o \
 MCAL/UART.o \
-microsar/UART/BSW_UART.o
+microsar/UART/BSW_UART.o \
+udsdiag/wModeUser/UDS_wModeUser_SID10.o \
+udsdiag/wModeUser/UDS_wModeUser_SID11.o \
+udsdiag/wModeUser/UDS_wModeUser_SID14.o \
+udsdiag/wModeUser/UDS_wModeUser_SID28.o \
+udsdiag/wModeUser/UDS_wModeUser_SID31.o \
+udsdiag/wModeUser/UDS_wModeUser_SID85.o
 
 C_DEPS +=  \
 Apl/Apl_Init.d \
-Apl/Apl_mainControlTsk.d \
-Apl/Apl_MainTskIdle.d \
 Apl/Apl_TaskListMain.d \
 Apl/Com/floatToString.d \
 Apl/ControlUnit/Apl_goLeftWait.d \
 Apl/ControlUnit/Apl_goRightWait.d \
 Apl/ControlUnit/Apl_goStraightWait.d \
+Apl/ControlUnit/Apl_mainControlTsk.d \
+Apl/ControlUnit/Apl_MainTskIdle.d \
 Apl/Crypto/aes128.d \
 Apl/Crypto/AES_CBC_Mode.d \
 Apl/Crypto/AES_ECB_Mode.d \
@@ -171,17 +195,23 @@ MCAL/gpt.d \
 MCAL/i2c.d \
 MCAL/spi.d \
 MCAL/UART.d \
-microsar/UART/BSW_UART.d
+microsar/UART/BSW_UART.d \
+udsdiag/wModeUser/UDS_wModeUser_SID10.d \
+udsdiag/wModeUser/UDS_wModeUser_SID11.d \
+udsdiag/wModeUser/UDS_wModeUser_SID14.d \
+udsdiag/wModeUser/UDS_wModeUser_SID28.d \
+udsdiag/wModeUser/UDS_wModeUser_SID31.d \
+udsdiag/wModeUser/UDS_wModeUser_SID85.d
 
 C_DEPS_AS_ARGS +=  \
 Apl/Apl_Init.d \
-Apl/Apl_mainControlTsk.d \
-Apl/Apl_MainTskIdle.d \
 Apl/Apl_TaskListMain.d \
 Apl/Com/floatToString.d \
 Apl/ControlUnit/Apl_goLeftWait.d \
 Apl/ControlUnit/Apl_goRightWait.d \
 Apl/ControlUnit/Apl_goStraightWait.d \
+Apl/ControlUnit/Apl_mainControlTsk.d \
+Apl/ControlUnit/Apl_MainTskIdle.d \
 Apl/Crypto/aes128.d \
 Apl/Crypto/AES_CBC_Mode.d \
 Apl/Crypto/AES_ECB_Mode.d \
@@ -198,7 +228,13 @@ MCAL/gpt.d \
 MCAL/i2c.d \
 MCAL/spi.d \
 MCAL/UART.d \
-microsar/UART/BSW_UART.d
+microsar/UART/BSW_UART.d \
+udsdiag/wModeUser/UDS_wModeUser_SID10.d \
+udsdiag/wModeUser/UDS_wModeUser_SID11.d \
+udsdiag/wModeUser/UDS_wModeUser_SID14.d \
+udsdiag/wModeUser/UDS_wModeUser_SID28.d \
+udsdiag/wModeUser/UDS_wModeUser_SID31.d \
+udsdiag/wModeUser/UDS_wModeUser_SID85.d
 
 OUTPUT_FILE_PATH +=AVR128_AUTOSAR.elf
 
@@ -215,20 +251,6 @@ LINKER_SCRIPT_DEP+=
 
 # AVR32/GNU C Compiler
 Apl/Apl_Init.o: ../Apl/Apl_Init.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-Apl/Apl_mainControlTsk.o: ../Apl/Apl_mainControlTsk.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-Apl/Apl_MainTskIdle.o: ../Apl/Apl_MainTskIdle.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -264,6 +286,20 @@ Apl/ControlUnit/Apl_goRightWait.o: ../Apl/ControlUnit/Apl_goRightWait.c
 	
 
 Apl/ControlUnit/Apl_goStraightWait.o: ../Apl/ControlUnit/Apl_goStraightWait.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Apl/ControlUnit/Apl_mainControlTsk.o: ../Apl/ControlUnit/Apl_mainControlTsk.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Apl/ControlUnit/Apl_MainTskIdle.o: ../Apl/ControlUnit/Apl_MainTskIdle.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -383,6 +419,48 @@ MCAL/UART.o: ../MCAL/UART.c
 	
 
 microsar/UART/BSW_UART.o: ../microsar/UART/BSW_UART.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+udsdiag/wModeUser/UDS_wModeUser_SID10.o: ../udsdiag/wModeUser/UDS_wModeUser_SID10.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+udsdiag/wModeUser/UDS_wModeUser_SID11.o: ../udsdiag/wModeUser/UDS_wModeUser_SID11.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+udsdiag/wModeUser/UDS_wModeUser_SID14.o: ../udsdiag/wModeUser/UDS_wModeUser_SID14.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+udsdiag/wModeUser/UDS_wModeUser_SID28.o: ../udsdiag/wModeUser/UDS_wModeUser_SID28.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+udsdiag/wModeUser/UDS_wModeUser_SID31.o: ../udsdiag/wModeUser/UDS_wModeUser_SID31.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+udsdiag/wModeUser/UDS_wModeUser_SID85.o: ../udsdiag/wModeUser/UDS_wModeUser_SID85.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

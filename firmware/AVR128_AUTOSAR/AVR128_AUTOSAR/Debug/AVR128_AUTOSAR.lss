@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00001281  00000000  00000000  00003492  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000126a  00000000  00000000  00004713  2**0
+  8 .debug_line   000012b4  00000000  00000000  00004713  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000408  00000000  00000000  00005980  2**2
+  9 .debug_frame  00000408  00000000  00000000  000059c8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000a93  00000000  00000000  00005d88  2**0
+ 10 .debug_str    00000aab  00000000  00000000  00005dd0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000009df  00000000  00000000  0000681b  2**0
+ 11 .debug_loc    000009df  00000000  00000000  0000687b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000001b8  00000000  00000000  000071fa  2**0
+ 12 .debug_ranges 000001b8  00000000  00000000  0000725a  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -103,15 +103,15 @@ Disassembly of section .text:
   86:	00 00       	nop
   88:	27 c0       	rjmp	.+78     	; 0xd8 <__bad_interrupt>
   8a:	00 00       	nop
-  8c:	fa 00       	.word	0x00fa	; ????
-  8e:	0c 01       	movw	r0, r24
-  90:	1e 01       	movw	r2, r28
-  92:	30 01       	movw	r6, r0
-  94:	42 01       	movw	r8, r4
-  96:	54 01       	movw	r10, r8
-  98:	66 01       	movw	r12, r12
-  9a:	78 01       	movw	r14, r16
-  9c:	8a 01       	movw	r16, r20
+  8c:	5b 01       	movw	r10, r22
+  8e:	6d 01       	movw	r12, r26
+  90:	7f 01       	movw	r14, r30
+  92:	91 01       	movw	r18, r2
+  94:	a3 01       	movw	r20, r6
+  96:	b5 01       	movw	r22, r10
+  98:	c7 01       	movw	r24, r14
+  9a:	d9 01       	movw	r26, r18
+  9c:	eb 01       	movw	r28, r22
 
 0000009e <__ctors_end>:
   9e:	11 24       	eor	r1, r1
@@ -167,7 +167,7 @@ void Apl_mainTaskStateInit(void)
   de:	60 e0       	ldi	r22, 0x00	; 0
   e0:	70 e0       	ldi	r23, 0x00	; 0
   e2:	87 e0       	ldi	r24, 0x07	; 7
-  e4:	77 c0       	rjmp	.+238    	; 0x1d4 <Apl_setEvt>
+  e4:	d8 c0       	rjmp	.+432    	; 0x296 <Apl_setEvt>
   e6:	08 95       	ret
 
 000000e8 <Apl_networkInit>:
@@ -245,599 +245,603 @@ void Apl_Init(void)
 	Apl_controllerUnitInit();
  14a:	08 95       	ret
 
-0000014c <Apl_gpioChangeState>:
- 14c:	cf 93       	push	r28
- 14e:	df 93       	push	r29
-	}
-};
-
-
-void Apl_gpioChangeState(uint16 currenstate, void* para)
-{
- 150:	ec 01       	movw	r28, r24
-	uint16 u2a_currentState;
-	
-	u2a_currentState = currenstate;
-	
-	if (NULL != Apl_stateMachine[u2a_currentState].evtExit) {
- 152:	fc 01       	movw	r30, r24
- 154:	ee 0f       	add	r30, r30
- 156:	ff 1f       	adc	r31, r31
- 158:	cf 01       	movw	r24, r30
- 15a:	88 0f       	add	r24, r24
- 15c:	99 1f       	adc	r25, r25
- 15e:	88 0f       	add	r24, r24
- 160:	99 1f       	adc	r25, r25
- 162:	88 0f       	add	r24, r24
- 164:	99 1f       	adc	r25, r25
- 166:	e8 0f       	add	r30, r24
- 168:	f9 1f       	adc	r31, r25
- 16a:	e0 50       	subi	r30, 0x00	; 0
- 16c:	ff 4f       	sbci	r31, 0xFF	; 255
- 16e:	00 88       	ldd	r0, Z+16	; 0x10
- 170:	f1 89       	ldd	r31, Z+17	; 0x11
- 172:	e0 2d       	mov	r30, r0
- 174:	30 97       	sbiw	r30, 0x00	; 0
- 176:	21 f0       	breq	.+8      	; 0x180 <Apl_gpioChangeState+0x34>
-		Apl_stateMachine[currenstate].evtExit(u2a_currentState, NULL);
- 178:	60 e0       	ldi	r22, 0x00	; 0
- 17a:	70 e0       	ldi	r23, 0x00	; 0
- 17c:	ce 01       	movw	r24, r28
- 17e:	09 95       	icall
-	}
-	
-	
-	if (STATE_MAXNUMBER < u2a_currentState) {
- 180:	c5 30       	cpi	r28, 0x05	; 5
- 182:	d1 05       	cpc	r29, r1
- 184:	18 f4       	brcc	.+6      	; 0x18c <Apl_gpioChangeState+0x40>
-
-void Apl_gpioChangeState(uint16 currenstate, void* para)
-{
-	uint16 u2a_currentState;
-	
-	u2a_currentState = currenstate;
- 186:	2c 2f       	mov	r18, r28
- 188:	3d 2f       	mov	r19, r29
- 18a:	02 c0       	rjmp	.+4      	; 0x190 <Apl_gpioChangeState+0x44>
-		Apl_stateMachine[currenstate].evtExit(u2a_currentState, NULL);
-	}
-	
-	
-	if (STATE_MAXNUMBER < u2a_currentState) {
-		u2a_currentState = APL_TASKLIST_IDLE;
- 18c:	20 e0       	ldi	r18, 0x00	; 0
- 18e:	30 e0       	ldi	r19, 0x00	; 0
-	}
-	
-	Apl_gpioCurrentSts = u2a_currentState;
- 190:	20 93 7f 01 	sts	0x017F, r18	; 0x80017f <Apl_gpioCurrentSts>
-	
-	if (NULL != Apl_stateMachine[u2a_currentState].evtEntry) {
- 194:	82 2f       	mov	r24, r18
- 196:	93 2f       	mov	r25, r19
- 198:	88 0f       	add	r24, r24
- 19a:	99 1f       	adc	r25, r25
- 19c:	fc 01       	movw	r30, r24
- 19e:	ee 0f       	add	r30, r30
- 1a0:	ff 1f       	adc	r31, r31
- 1a2:	ee 0f       	add	r30, r30
- 1a4:	ff 1f       	adc	r31, r31
- 1a6:	ee 0f       	add	r30, r30
- 1a8:	ff 1f       	adc	r31, r31
- 1aa:	8e 0f       	add	r24, r30
- 1ac:	9f 1f       	adc	r25, r31
- 1ae:	fc 01       	movw	r30, r24
- 1b0:	e0 50       	subi	r30, 0x00	; 0
- 1b2:	ff 4f       	sbci	r31, 0xFF	; 255
- 1b4:	06 84       	ldd	r0, Z+14	; 0x0e
- 1b6:	f7 85       	ldd	r31, Z+15	; 0x0f
- 1b8:	e0 2d       	mov	r30, r0
- 1ba:	30 97       	sbiw	r30, 0x00	; 0
- 1bc:	21 f0       	breq	.+8      	; 0x1c6 <Apl_gpioChangeState+0x7a>
-		Apl_stateMachine[u2a_currentState].evtEntry(currenstate, NULL);
- 1be:	60 e0       	ldi	r22, 0x00	; 0
- 1c0:	70 e0       	ldi	r23, 0x00	; 0
- 1c2:	ce 01       	movw	r24, r28
- 1c4:	09 95       	icall
-	}
-}
- 1c6:	df 91       	pop	r29
- 1c8:	cf 91       	pop	r28
- 1ca:	08 95       	ret
-
-000001cc <Apl_getCurrentSts>:
-	}
-}
-
-uint16 Apl_getCurrentSts(void)
-{
-	return Apl_gpioCurrentSts;
- 1cc:	80 91 7f 01 	lds	r24, 0x017F	; 0x80017f <Apl_gpioCurrentSts>
- 1d0:	90 e0       	ldi	r25, 0x00	; 0
- 1d2:	08 95       	ret
-
-000001d4 <Apl_setEvt>:
-	if (NULL != Apl_stateMachine[u2a_currentState].evtEntry) {
-		Apl_stateMachine[u2a_currentState].evtEntry(currenstate, NULL);
-	}
-}
-
-void Apl_setEvt(uint8 evtJob, void* para) {
- 1d4:	0f 93       	push	r16
- 1d6:	1f 93       	push	r17
- 1d8:	cf 93       	push	r28
- 1da:	c8 2f       	mov	r28, r24
- 1dc:	8b 01       	movw	r16, r22
-	uint16 CurrentSts;
-	
-	MainControlSts Controller;
-
-	CurrentSts = Apl_getCurrentSts();
- 1de:	f6 df       	rcall	.-20     	; 0x1cc <Apl_getCurrentSts>
-	
-	Controller = NULL;
-	
-	switch (evtJob)
- 1e0:	4c 2f       	mov	r20, r28
- 1e2:	50 e0       	ldi	r21, 0x00	; 0
- 1e4:	49 30       	cpi	r20, 0x09	; 9
- 1e6:	51 05       	cpc	r21, r1
- 1e8:	08 f0       	brcs	.+2      	; 0x1ec <Apl_setEvt+0x18>
- 1ea:	a6 c0       	rjmp	.+332    	; 0x338 <Apl_setEvt+0x164>
- 1ec:	fa 01       	movw	r30, r20
- 1ee:	ea 5b       	subi	r30, 0xBA	; 186
- 1f0:	ff 4f       	sbci	r31, 0xFF	; 255
- 1f2:	ad c2       	rjmp	.+1370   	; 0x74e <__tablejump2__>
-	{
-		case APL_EXECUTE_EVENT_GOSTRAIGHT:
-		{
-			Controller = Apl_stateMachine[CurrentSts].evtGoStraight;
- 1f4:	fc 01       	movw	r30, r24
- 1f6:	ee 0f       	add	r30, r30
- 1f8:	ff 1f       	adc	r31, r31
- 1fa:	9f 01       	movw	r18, r30
- 1fc:	22 0f       	add	r18, r18
- 1fe:	33 1f       	adc	r19, r19
- 200:	22 0f       	add	r18, r18
- 202:	33 1f       	adc	r19, r19
- 204:	22 0f       	add	r18, r18
- 206:	33 1f       	adc	r19, r19
- 208:	e2 0f       	add	r30, r18
- 20a:	f3 1f       	adc	r31, r19
- 20c:	e0 50       	subi	r30, 0x00	; 0
- 20e:	ff 4f       	sbci	r31, 0xFF	; 255
- 210:	01 90       	ld	r0, Z+
- 212:	f0 81       	ld	r31, Z
- 214:	e0 2d       	mov	r30, r0
-			break;
- 216:	92 c0       	rjmp	.+292    	; 0x33c <Apl_setEvt+0x168>
-		}
-		case APL_EXECUTE_EVENT_WAITGOSTRAIGHT:
-		{
-			Controller = Apl_stateMachine[CurrentSts].evtWaitGoStraight;
- 218:	fc 01       	movw	r30, r24
- 21a:	ee 0f       	add	r30, r30
- 21c:	ff 1f       	adc	r31, r31
- 21e:	9f 01       	movw	r18, r30
- 220:	22 0f       	add	r18, r18
- 222:	33 1f       	adc	r19, r19
- 224:	22 0f       	add	r18, r18
- 226:	33 1f       	adc	r19, r19
- 228:	22 0f       	add	r18, r18
- 22a:	33 1f       	adc	r19, r19
- 22c:	e2 0f       	add	r30, r18
- 22e:	f3 1f       	adc	r31, r19
- 230:	e0 50       	subi	r30, 0x00	; 0
- 232:	ff 4f       	sbci	r31, 0xFF	; 255
- 234:	02 80       	ldd	r0, Z+2	; 0x02
- 236:	f3 81       	ldd	r31, Z+3	; 0x03
- 238:	e0 2d       	mov	r30, r0
-			break;
- 23a:	80 c0       	rjmp	.+256    	; 0x33c <Apl_setEvt+0x168>
-		}
-		case APL_EXECUTE_EVENT_GOLEFT:
-		{
-			Controller = Apl_stateMachine[CurrentSts].evtGoLeft;
- 23c:	fc 01       	movw	r30, r24
- 23e:	ee 0f       	add	r30, r30
- 240:	ff 1f       	adc	r31, r31
- 242:	9f 01       	movw	r18, r30
- 244:	22 0f       	add	r18, r18
- 246:	33 1f       	adc	r19, r19
- 248:	22 0f       	add	r18, r18
- 24a:	33 1f       	adc	r19, r19
- 24c:	22 0f       	add	r18, r18
- 24e:	33 1f       	adc	r19, r19
- 250:	e2 0f       	add	r30, r18
- 252:	f3 1f       	adc	r31, r19
- 254:	e0 50       	subi	r30, 0x00	; 0
- 256:	ff 4f       	sbci	r31, 0xFF	; 255
- 258:	04 80       	ldd	r0, Z+4	; 0x04
- 25a:	f5 81       	ldd	r31, Z+5	; 0x05
- 25c:	e0 2d       	mov	r30, r0
-			break;
- 25e:	6e c0       	rjmp	.+220    	; 0x33c <Apl_setEvt+0x168>
-		}
-		case APL_EXECUTE_EVENT_WAITGOLEFT:
-		{
-			Controller = Apl_stateMachine[CurrentSts].evtWaitGoLeft;
- 260:	fc 01       	movw	r30, r24
- 262:	ee 0f       	add	r30, r30
- 264:	ff 1f       	adc	r31, r31
- 266:	9f 01       	movw	r18, r30
- 268:	22 0f       	add	r18, r18
- 26a:	33 1f       	adc	r19, r19
- 26c:	22 0f       	add	r18, r18
- 26e:	33 1f       	adc	r19, r19
- 270:	22 0f       	add	r18, r18
- 272:	33 1f       	adc	r19, r19
- 274:	e2 0f       	add	r30, r18
- 276:	f3 1f       	adc	r31, r19
- 278:	e0 50       	subi	r30, 0x00	; 0
- 27a:	ff 4f       	sbci	r31, 0xFF	; 255
- 27c:	06 80       	ldd	r0, Z+6	; 0x06
- 27e:	f7 81       	ldd	r31, Z+7	; 0x07
- 280:	e0 2d       	mov	r30, r0
-			break;
- 282:	5c c0       	rjmp	.+184    	; 0x33c <Apl_setEvt+0x168>
-		}
-		case APL_EXECUTE_EVENT_GORIGHT:
-		{
-			Controller = Apl_stateMachine[CurrentSts].evtGoRight;
- 284:	fc 01       	movw	r30, r24
- 286:	ee 0f       	add	r30, r30
- 288:	ff 1f       	adc	r31, r31
- 28a:	9f 01       	movw	r18, r30
- 28c:	22 0f       	add	r18, r18
- 28e:	33 1f       	adc	r19, r19
- 290:	22 0f       	add	r18, r18
- 292:	33 1f       	adc	r19, r19
- 294:	22 0f       	add	r18, r18
- 296:	33 1f       	adc	r19, r19
- 298:	e2 0f       	add	r30, r18
- 29a:	f3 1f       	adc	r31, r19
- 29c:	e0 50       	subi	r30, 0x00	; 0
- 29e:	ff 4f       	sbci	r31, 0xFF	; 255
- 2a0:	00 84       	ldd	r0, Z+8	; 0x08
- 2a2:	f1 85       	ldd	r31, Z+9	; 0x09
- 2a4:	e0 2d       	mov	r30, r0
-			break;
- 2a6:	4a c0       	rjmp	.+148    	; 0x33c <Apl_setEvt+0x168>
-		}
-		case APL_EXECUTE_EVENT_WAITGORIGHT:
-		{
-			Controller = Apl_stateMachine[CurrentSts].evtWaitGoRigth;
- 2a8:	fc 01       	movw	r30, r24
- 2aa:	ee 0f       	add	r30, r30
- 2ac:	ff 1f       	adc	r31, r31
- 2ae:	9f 01       	movw	r18, r30
- 2b0:	22 0f       	add	r18, r18
- 2b2:	33 1f       	adc	r19, r19
- 2b4:	22 0f       	add	r18, r18
- 2b6:	33 1f       	adc	r19, r19
- 2b8:	22 0f       	add	r18, r18
- 2ba:	33 1f       	adc	r19, r19
- 2bc:	e2 0f       	add	r30, r18
- 2be:	f3 1f       	adc	r31, r19
- 2c0:	e0 50       	subi	r30, 0x00	; 0
- 2c2:	ff 4f       	sbci	r31, 0xFF	; 255
- 2c4:	02 84       	ldd	r0, Z+10	; 0x0a
- 2c6:	f3 85       	ldd	r31, Z+11	; 0x0b
- 2c8:	e0 2d       	mov	r30, r0
-			break;
- 2ca:	38 c0       	rjmp	.+112    	; 0x33c <Apl_setEvt+0x168>
-		}
-		case APL_EXECUTE_EVENT_COM:
-		{
-			Controller = Apl_stateMachine[CurrentSts].evtJob;
- 2cc:	fc 01       	movw	r30, r24
- 2ce:	ee 0f       	add	r30, r30
- 2d0:	ff 1f       	adc	r31, r31
- 2d2:	9f 01       	movw	r18, r30
- 2d4:	22 0f       	add	r18, r18
- 2d6:	33 1f       	adc	r19, r19
- 2d8:	22 0f       	add	r18, r18
- 2da:	33 1f       	adc	r19, r19
- 2dc:	22 0f       	add	r18, r18
- 2de:	33 1f       	adc	r19, r19
- 2e0:	e2 0f       	add	r30, r18
- 2e2:	f3 1f       	adc	r31, r19
- 2e4:	e0 50       	subi	r30, 0x00	; 0
- 2e6:	ff 4f       	sbci	r31, 0xFF	; 255
- 2e8:	04 84       	ldd	r0, Z+12	; 0x0c
- 2ea:	f5 85       	ldd	r31, Z+13	; 0x0d
- 2ec:	e0 2d       	mov	r30, r0
-			break;
- 2ee:	26 c0       	rjmp	.+76     	; 0x33c <Apl_setEvt+0x168>
-		}
-		case APL_EXECUTE_EVENT_ENTRY:
-		{
-			Controller = Apl_stateMachine[CurrentSts].evtEntry;
- 2f0:	fc 01       	movw	r30, r24
- 2f2:	ee 0f       	add	r30, r30
- 2f4:	ff 1f       	adc	r31, r31
- 2f6:	9f 01       	movw	r18, r30
- 2f8:	22 0f       	add	r18, r18
- 2fa:	33 1f       	adc	r19, r19
- 2fc:	22 0f       	add	r18, r18
- 2fe:	33 1f       	adc	r19, r19
- 300:	22 0f       	add	r18, r18
- 302:	33 1f       	adc	r19, r19
- 304:	e2 0f       	add	r30, r18
- 306:	f3 1f       	adc	r31, r19
- 308:	e0 50       	subi	r30, 0x00	; 0
- 30a:	ff 4f       	sbci	r31, 0xFF	; 255
- 30c:	06 84       	ldd	r0, Z+14	; 0x0e
- 30e:	f7 85       	ldd	r31, Z+15	; 0x0f
- 310:	e0 2d       	mov	r30, r0
-			break;
- 312:	14 c0       	rjmp	.+40     	; 0x33c <Apl_setEvt+0x168>
-		}
-		case APL_EXECUTE_EVENT_EXIT:
-		{
-			Controller = Apl_stateMachine[CurrentSts].evtExit;
- 314:	fc 01       	movw	r30, r24
- 316:	ee 0f       	add	r30, r30
- 318:	ff 1f       	adc	r31, r31
- 31a:	9f 01       	movw	r18, r30
- 31c:	22 0f       	add	r18, r18
- 31e:	33 1f       	adc	r19, r19
- 320:	22 0f       	add	r18, r18
- 322:	33 1f       	adc	r19, r19
- 324:	22 0f       	add	r18, r18
- 326:	33 1f       	adc	r19, r19
- 328:	e2 0f       	add	r30, r18
- 32a:	f3 1f       	adc	r31, r19
- 32c:	e0 50       	subi	r30, 0x00	; 0
- 32e:	ff 4f       	sbci	r31, 0xFF	; 255
- 330:	00 88       	ldd	r0, Z+16	; 0x10
- 332:	f1 89       	ldd	r31, Z+17	; 0x11
- 334:	e0 2d       	mov	r30, r0
-			break;
- 336:	02 c0       	rjmp	.+4      	; 0x33c <Apl_setEvt+0x168>
-	
-	MainControlSts Controller;
-
-	CurrentSts = Apl_getCurrentSts();
-	
-	Controller = NULL;
- 338:	e0 e0       	ldi	r30, 0x00	; 0
- 33a:	f0 e0       	ldi	r31, 0x00	; 0
-		default:
-			break;
-		
-	}
-
-	if (NULL != Controller) {
- 33c:	30 97       	sbiw	r30, 0x00	; 0
- 33e:	11 f0       	breq	.+4      	; 0x344 <Apl_setEvt+0x170>
-		Controller(CurrentSts, para);
- 340:	b8 01       	movw	r22, r16
- 342:	09 95       	icall
-	}
-}
- 344:	cf 91       	pop	r28
- 346:	1f 91       	pop	r17
- 348:	0f 91       	pop	r16
- 34a:	08 95       	ret
-
-0000034c <Apl_mainIdle_EvReqGoStraight>:
-
-#include "Apl_MainTskIdle.h"
-
-void Apl_mainIdle_EvReqGoStraight(uint16 currentState, void* para)
-{
-	Apl_gpioChangeState(APL_TASKLIST_GOSTRAIGHT, NULL);
- 34c:	60 e0       	ldi	r22, 0x00	; 0
- 34e:	70 e0       	ldi	r23, 0x00	; 0
- 350:	81 e0       	ldi	r24, 0x01	; 1
- 352:	90 e0       	ldi	r25, 0x00	; 0
- 354:	fb ce       	rjmp	.-522    	; 0x14c <Apl_gpioChangeState>
- 356:	08 95       	ret
-
-00000358 <Apl_mainIdle_EvReqGoLeft>:
-	return;	
-}
-
-void Apl_mainIdle_EvReqGoLeft(uint16 currentState, void* para)
-{
- 358:	08 95       	ret
-
-0000035a <Apl_mainIdle_EvReqGoRight>:
-	return;
-}
-
-void Apl_mainIdle_EvReqGoRight(uint16 currentState, void* para)
-{
- 35a:	08 95       	ret
-
-0000035c <Apl_mainIdle_EvJob>:
-	return;
-}
-
-void Apl_mainIdle_EvJob(uint16 currentState, void* para)
-{
-	clr_LCD();
- 35c:	2d d1       	rcall	.+602    	; 0x5b8 <clr_LCD>
-	move_LCD(0,0);
- 35e:	60 e0       	ldi	r22, 0x00	; 0
- 360:	80 e0       	ldi	r24, 0x00	; 0
- 362:	0a d1       	rcall	.+532    	; 0x578 <move_LCD>
-	printf_LCD("State IDLE");
- 364:	88 e4       	ldi	r24, 0x48	; 72
- 366:	91 e0       	ldi	r25, 0x01	; 1
- 368:	9f 93       	push	r25
- 36a:	8f 93       	push	r24
- 36c:	44 d1       	rcall	.+648    	; 0x5f6 <printf_LCD>
-
-	PORTE |= (1<<PE4);
- 36e:	83 b1       	in	r24, 0x03	; 3
- 370:	80 61       	ori	r24, 0x10	; 16
- 372:	83 b9       	out	0x03, r24	; 3
-	#else
-		//round up by default
-		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
-	#endif
-
-	__builtin_avr_delay_cycles(__ticks_dc);
- 374:	2f ef       	ldi	r18, 0xFF	; 255
- 376:	8f e7       	ldi	r24, 0x7F	; 127
- 378:	96 e1       	ldi	r25, 0x16	; 22
- 37a:	21 50       	subi	r18, 0x01	; 1
- 37c:	80 40       	sbci	r24, 0x00	; 0
- 37e:	90 40       	sbci	r25, 0x00	; 0
- 380:	e1 f7       	brne	.-8      	; 0x37a <Apl_mainIdle_EvJob+0x1e>
- 382:	00 c0       	rjmp	.+0      	; 0x384 <Apl_mainIdle_EvJob+0x28>
- 384:	00 00       	nop
-	_delay_ms(1000);
-	PORTE &= ~(1<<PE4);
- 386:	83 b1       	in	r24, 0x03	; 3
- 388:	8f 7e       	andi	r24, 0xEF	; 239
- 38a:	83 b9       	out	0x03, r24	; 3
- 38c:	2f ef       	ldi	r18, 0xFF	; 255
- 38e:	8f e7       	ldi	r24, 0x7F	; 127
- 390:	96 e1       	ldi	r25, 0x16	; 22
- 392:	21 50       	subi	r18, 0x01	; 1
- 394:	80 40       	sbci	r24, 0x00	; 0
- 396:	90 40       	sbci	r25, 0x00	; 0
- 398:	e1 f7       	brne	.-8      	; 0x392 <Apl_mainIdle_EvJob+0x36>
- 39a:	00 c0       	rjmp	.+0      	; 0x39c <Apl_mainIdle_EvJob+0x40>
- 39c:	00 00       	nop
-	_delay_ms(1000);
-	
-	++Apl_Counter;
- 39e:	80 91 82 01 	lds	r24, 0x0182	; 0x800182 <Apl_Counter>
- 3a2:	8f 5f       	subi	r24, 0xFF	; 255
- 3a4:	80 93 82 01 	sts	0x0182, r24	; 0x800182 <Apl_Counter>
-	
-	if (3u == Apl_Counter) {
- 3a8:	0f 90       	pop	r0
- 3aa:	0f 90       	pop	r0
- 3ac:	83 30       	cpi	r24, 0x03	; 3
- 3ae:	41 f4       	brne	.+16     	; 0x3c0 <Apl_mainIdle_EvJob+0x64>
-		ControllerUnit->flag = ARG_TRUE;
- 3b0:	e0 91 80 01 	lds	r30, 0x0180	; 0x800180 <ControllerUnit>
- 3b4:	f0 91 81 01 	lds	r31, 0x0181	; 0x800181 <ControllerUnit+0x1>
- 3b8:	81 e0       	ldi	r24, 0x01	; 1
- 3ba:	84 83       	std	Z+4, r24	; 0x04
-		Apl_Counter = 0;
- 3bc:	10 92 82 01 	sts	0x0182, r1	; 0x800182 <Apl_Counter>
- 3c0:	08 95       	ret
-
-000003c2 <Apl_mainIdle_entry>:
-	return;
-}
-
-
-void Apl_mainIdle_entry(uint16 currentState, void* para)
-{
- 3c2:	08 95       	ret
-
-000003c4 <Apl_mainIdle_exit>:
-	return;
-}
-
-void Apl_mainIdle_exit(uint16 currentState, void* para)
-{
- 3c4:	08 95       	ret
-
-000003c6 <Apl_mainTask>:
+0000014c <Apl_mainTask>:
+ 14c:	80 91 7f 01 	lds	r24, 0x017F	; 0x80017f <Apl_gpioCurrentSts>
 #include <Apl_TaskListMain.h>
 #include "Apl_Public_Variable.h"
 
 void Apl_mainTask(void) {
 	
 	Apl_gpioChangeState(Apl_gpioCurrentSts, NULL);
- 3c6:	80 91 7f 01 	lds	r24, 0x017F	; 0x80017f <Apl_gpioCurrentSts>
- 3ca:	60 e0       	ldi	r22, 0x00	; 0
- 3cc:	70 e0       	ldi	r23, 0x00	; 0
- 3ce:	90 e0       	ldi	r25, 0x00	; 0
- 3d0:	bd de       	rcall	.-646    	; 0x14c <Apl_gpioChangeState>
+ 150:	60 e0       	ldi	r22, 0x00	; 0
+ 152:	70 e0       	ldi	r23, 0x00	; 0
+ 154:	90 e0       	ldi	r25, 0x00	; 0
+ 156:	5b d0       	rcall	.+182    	; 0x20e <Apl_gpioChangeState>
 	
 	if (ARG_TRUE == ControllerUnit->flag) {
- 3d2:	e0 91 80 01 	lds	r30, 0x0180	; 0x800180 <ControllerUnit>
- 3d6:	f0 91 81 01 	lds	r31, 0x0181	; 0x800181 <ControllerUnit+0x1>
- 3da:	84 81       	ldd	r24, Z+4	; 0x04
- 3dc:	81 30       	cpi	r24, 0x01	; 1
- 3de:	49 f4       	brne	.+18     	; 0x3f2 <Apl_mainTask+0x2c>
+ 158:	e0 91 80 01 	lds	r30, 0x0180	; 0x800180 <ControllerUnit>
+ 15c:	f0 91 81 01 	lds	r31, 0x0181	; 0x800181 <ControllerUnit+0x1>
+ 160:	84 81       	ldd	r24, Z+4	; 0x04
+ 162:	81 30       	cpi	r24, 0x01	; 1
+ 164:	49 f4       	brne	.+18     	; 0x178 <Apl_mainTask+0x2c>
 		Apl_setEvt(APL_EXECUTE_EVENT_GOSTRAIGHT, NULL);
- 3e0:	60 e0       	ldi	r22, 0x00	; 0
- 3e2:	70 e0       	ldi	r23, 0x00	; 0
- 3e4:	80 e0       	ldi	r24, 0x00	; 0
- 3e6:	f6 de       	rcall	.-532    	; 0x1d4 <Apl_setEvt>
+ 166:	60 e0       	ldi	r22, 0x00	; 0
+ 168:	70 e0       	ldi	r23, 0x00	; 0
+ 16a:	80 e0       	ldi	r24, 0x00	; 0
+ 16c:	94 d0       	rcall	.+296    	; 0x296 <Apl_setEvt>
 		ControllerUnit->flag = ARG_FALSE;
- 3e8:	e0 91 80 01 	lds	r30, 0x0180	; 0x800180 <ControllerUnit>
- 3ec:	f0 91 81 01 	lds	r31, 0x0181	; 0x800181 <ControllerUnit+0x1>
- 3f0:	14 82       	std	Z+4, r1	; 0x04
+ 16e:	e0 91 80 01 	lds	r30, 0x0180	; 0x800180 <ControllerUnit>
+ 172:	f0 91 81 01 	lds	r31, 0x0181	; 0x800181 <ControllerUnit+0x1>
+ 176:	14 82       	std	Z+4, r1	; 0x04
 	}
 	
 	Apl_setEvt(APL_EXECUTE_EVENT_COM, NULL);
- 3f2:	60 e0       	ldi	r22, 0x00	; 0
- 3f4:	70 e0       	ldi	r23, 0x00	; 0
- 3f6:	86 e0       	ldi	r24, 0x06	; 6
- 3f8:	ed ce       	rjmp	.-550    	; 0x1d4 <Apl_setEvt>
- 3fa:	08 95       	ret
+ 178:	60 e0       	ldi	r22, 0x00	; 0
+ 17a:	70 e0       	ldi	r23, 0x00	; 0
+ 17c:	86 e0       	ldi	r24, 0x06	; 6
+ 17e:	8b c0       	rjmp	.+278    	; 0x296 <Apl_setEvt>
+ 180:	08 95       	ret
 
-000003fc <Apl_mainGoLeftWait_EvEnd>:
+00000182 <Apl_mainGoLeftWait_EvEnd>:
  */ 
 
 #include "Apl_goLeftWait.h"
 
 void Apl_mainGoLeftWait_EvEnd(uint16 currentState, void* para)
 {
- 3fc:	08 95       	ret
+ 182:	08 95       	ret
 
-000003fe <Apl_mainGoLeftWait_EvJob>:
+00000184 <Apl_mainGoLeftWait_EvJob>:
 	return;
 }
 
 void Apl_mainGoLeftWait_EvJob(uint16 currentState, void* para)
 {
- 3fe:	08 95       	ret
+ 184:	08 95       	ret
 
-00000400 <Apl_mainGoLeftWait_entry>:
+00000186 <Apl_mainGoLeftWait_entry>:
 	return;
 }
 
 void Apl_mainGoLeftWait_entry(uint16 currentState, void* para)
 {
- 400:	08 95       	ret
+ 186:	08 95       	ret
 
-00000402 <Apl_mainGoLeftWait_exit>:
+00000188 <Apl_mainGoLeftWait_exit>:
 	return;
 }
 
 void Apl_mainGoLeftWait_exit(uint16 currentState, void* para)
 {
- 402:	08 95       	ret
+ 188:	08 95       	ret
 
-00000404 <Apl_mainGoStraightWait_EvEnd>:
+0000018a <Apl_mainGoStraightWait_EvEnd>:
 #include "Apl_goStraightWait.h"
 #include "Apl_Public_Variable.h"
 
 void Apl_mainGoStraightWait_EvEnd(uint16 currentState, void* para)
 {
 	if (E_OK == Apl_FlagCom) {
- 404:	80 91 83 01 	lds	r24, 0x0183	; 0x800183 <Apl_FlagCom>
- 408:	81 11       	cpse	r24, r1
- 40a:	08 c0       	rjmp	.+16     	; 0x41c <Apl_mainGoStraightWait_EvEnd+0x18>
+ 18a:	80 91 83 01 	lds	r24, 0x0183	; 0x800183 <Apl_FlagCom>
+ 18e:	81 11       	cpse	r24, r1
+ 190:	08 c0       	rjmp	.+16     	; 0x1a2 <Apl_mainGoStraightWait_EvEnd+0x18>
 		Apl_gpioChangeState(APL_TASKLIST_IDLE, NULL);
- 40c:	60 e0       	ldi	r22, 0x00	; 0
- 40e:	70 e0       	ldi	r23, 0x00	; 0
- 410:	80 e0       	ldi	r24, 0x00	; 0
- 412:	90 e0       	ldi	r25, 0x00	; 0
- 414:	9b de       	rcall	.-714    	; 0x14c <Apl_gpioChangeState>
+ 192:	60 e0       	ldi	r22, 0x00	; 0
+ 194:	70 e0       	ldi	r23, 0x00	; 0
+ 196:	80 e0       	ldi	r24, 0x00	; 0
+ 198:	90 e0       	ldi	r25, 0x00	; 0
+ 19a:	39 d0       	rcall	.+114    	; 0x20e <Apl_gpioChangeState>
 		Apl_FlagCom = E_NOTOK;
- 416:	81 e0       	ldi	r24, 0x01	; 1
- 418:	80 93 83 01 	sts	0x0183, r24	; 0x800183 <Apl_FlagCom>
- 41c:	08 95       	ret
+ 19c:	81 e0       	ldi	r24, 0x01	; 1
+ 19e:	80 93 83 01 	sts	0x0183, r24	; 0x800183 <Apl_FlagCom>
+ 1a2:	08 95       	ret
 
-0000041e <Apl_mainGoStraightWait_EvJob>:
+000001a4 <Apl_mainGoStraightWait_EvJob>:
 	return;
 }
 
 void Apl_mainGoStraightWait_EvJob(uint16 currentState, void* para)
+{
+	clr_LCD();
+ 1a4:	09 d2       	rcall	.+1042   	; 0x5b8 <clr_LCD>
+	move_LCD(0,0);
+ 1a6:	60 e0       	ldi	r22, 0x00	; 0
+ 1a8:	80 e0       	ldi	r24, 0x00	; 0
+ 1aa:	e6 d1       	rcall	.+972    	; 0x578 <move_LCD>
+	printf_LCD("State GO STRAIGHT");
+ 1ac:	80 e0       	ldi	r24, 0x00	; 0
+ 1ae:	91 e0       	ldi	r25, 0x01	; 1
+ 1b0:	9f 93       	push	r25
+ 1b2:	8f 93       	push	r24
+ 1b4:	20 d2       	rcall	.+1088   	; 0x5f6 <printf_LCD>
+
+	PORTE |= (1<<PE5);
+ 1b6:	83 b1       	in	r24, 0x03	; 3
+ 1b8:	80 62       	ori	r24, 0x20	; 32
+ 1ba:	83 b9       	out	0x03, r24	; 3
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 1bc:	2f ef       	ldi	r18, 0xFF	; 255
+ 1be:	8f e7       	ldi	r24, 0x7F	; 127
+ 1c0:	94 e0       	ldi	r25, 0x04	; 4
+ 1c2:	21 50       	subi	r18, 0x01	; 1
+ 1c4:	80 40       	sbci	r24, 0x00	; 0
+ 1c6:	90 40       	sbci	r25, 0x00	; 0
+ 1c8:	e1 f7       	brne	.-8      	; 0x1c2 <Apl_mainGoStraightWait_EvJob+0x1e>
+ 1ca:	00 c0       	rjmp	.+0      	; 0x1cc <Apl_mainGoStraightWait_EvJob+0x28>
+ 1cc:	00 00       	nop
+	_delay_ms(200);
+	PORTE &= ~(1<<PE5);
+ 1ce:	83 b1       	in	r24, 0x03	; 3
+ 1d0:	8f 7d       	andi	r24, 0xDF	; 223
+ 1d2:	83 b9       	out	0x03, r24	; 3
+ 1d4:	2f ef       	ldi	r18, 0xFF	; 255
+ 1d6:	8f e7       	ldi	r24, 0x7F	; 127
+ 1d8:	94 e0       	ldi	r25, 0x04	; 4
+ 1da:	21 50       	subi	r18, 0x01	; 1
+ 1dc:	80 40       	sbci	r24, 0x00	; 0
+ 1de:	90 40       	sbci	r25, 0x00	; 0
+ 1e0:	e1 f7       	brne	.-8      	; 0x1da <Apl_mainGoStraightWait_EvJob+0x36>
+ 1e2:	00 c0       	rjmp	.+0      	; 0x1e4 <Apl_mainGoStraightWait_EvJob+0x40>
+ 1e4:	00 00       	nop
+	_delay_ms(200);
+	
+	++Apl_Counter;
+ 1e6:	80 91 82 01 	lds	r24, 0x0182	; 0x800182 <Apl_Counter>
+ 1ea:	8f 5f       	subi	r24, 0xFF	; 255
+ 1ec:	80 93 82 01 	sts	0x0182, r24	; 0x800182 <Apl_Counter>
+	
+	if (10u == Apl_Counter) {
+ 1f0:	0f 90       	pop	r0
+ 1f2:	0f 90       	pop	r0
+ 1f4:	8a 30       	cpi	r24, 0x0A	; 10
+ 1f6:	21 f4       	brne	.+8      	; 0x200 <Apl_mainGoStraightWait_EvJob+0x5c>
+		Apl_FlagCom = E_OK;
+ 1f8:	10 92 83 01 	sts	0x0183, r1	; 0x800183 <Apl_FlagCom>
+		Apl_Counter = 0;
+ 1fc:	10 92 82 01 	sts	0x0182, r1	; 0x800182 <Apl_Counter>
+	}
+	
+    Apl_setEvt(APL_EXECUTE_EVENT_WAITGOSTRAIGHT, NULL);
+ 200:	60 e0       	ldi	r22, 0x00	; 0
+ 202:	70 e0       	ldi	r23, 0x00	; 0
+ 204:	81 e0       	ldi	r24, 0x01	; 1
+ 206:	47 c0       	rjmp	.+142    	; 0x296 <Apl_setEvt>
+ 208:	08 95       	ret
+
+0000020a <Apl_mainGoStraightWait_entry>:
+	
+	return;
+}
+
+void Apl_mainGoStraightWait_entry(uint16 currentState, void* para)
+{
+ 20a:	08 95       	ret
+
+0000020c <Apl_mainGoStraightWait_exit>:
+	return;
+}
+
+void Apl_mainGoStraightWait_exit(uint16 currentState, void* para)
+{
+ 20c:	08 95       	ret
+
+0000020e <Apl_gpioChangeState>:
+	}
+};
+
+
+void Apl_gpioChangeState(uint16 currenstate, void* para)
+{
+ 20e:	cf 93       	push	r28
+ 210:	df 93       	push	r29
+ 212:	ec 01       	movw	r28, r24
+	uint16 u2a_currentState;
+	
+	u2a_currentState = currenstate;
+	
+	if (NULL != Apl_stateMachine[u2a_currentState].evtExit) {
+ 214:	fc 01       	movw	r30, r24
+ 216:	ee 0f       	add	r30, r30
+ 218:	ff 1f       	adc	r31, r31
+ 21a:	cf 01       	movw	r24, r30
+ 21c:	88 0f       	add	r24, r24
+ 21e:	99 1f       	adc	r25, r25
+ 220:	88 0f       	add	r24, r24
+ 222:	99 1f       	adc	r25, r25
+ 224:	88 0f       	add	r24, r24
+ 226:	99 1f       	adc	r25, r25
+ 228:	e8 0f       	add	r30, r24
+ 22a:	f9 1f       	adc	r31, r25
+ 22c:	ee 5e       	subi	r30, 0xEE	; 238
+ 22e:	fe 4f       	sbci	r31, 0xFE	; 254
+ 230:	00 88       	ldd	r0, Z+16	; 0x10
+ 232:	f1 89       	ldd	r31, Z+17	; 0x11
+ 234:	e0 2d       	mov	r30, r0
+ 236:	30 97       	sbiw	r30, 0x00	; 0
+ 238:	21 f0       	breq	.+8      	; 0x242 <Apl_gpioChangeState+0x34>
+		Apl_stateMachine[currenstate].evtExit(u2a_currentState, NULL);
+ 23a:	60 e0       	ldi	r22, 0x00	; 0
+ 23c:	70 e0       	ldi	r23, 0x00	; 0
+ 23e:	ce 01       	movw	r24, r28
+ 240:	09 95       	icall
+	}
+	
+	
+	if (STATE_MAXNUMBER < u2a_currentState) {
+ 242:	c5 30       	cpi	r28, 0x05	; 5
+ 244:	d1 05       	cpc	r29, r1
+ 246:	18 f4       	brcc	.+6      	; 0x24e <Apl_gpioChangeState+0x40>
+
+void Apl_gpioChangeState(uint16 currenstate, void* para)
+{
+	uint16 u2a_currentState;
+	
+	u2a_currentState = currenstate;
+ 248:	2c 2f       	mov	r18, r28
+ 24a:	3d 2f       	mov	r19, r29
+ 24c:	02 c0       	rjmp	.+4      	; 0x252 <Apl_gpioChangeState+0x44>
+		Apl_stateMachine[currenstate].evtExit(u2a_currentState, NULL);
+	}
+	
+	
+	if (STATE_MAXNUMBER < u2a_currentState) {
+		u2a_currentState = APL_TASKLIST_IDLE;
+ 24e:	20 e0       	ldi	r18, 0x00	; 0
+ 250:	30 e0       	ldi	r19, 0x00	; 0
+	}
+	
+	Apl_gpioCurrentSts = u2a_currentState;
+ 252:	20 93 7f 01 	sts	0x017F, r18	; 0x80017f <Apl_gpioCurrentSts>
+	
+	if (NULL != Apl_stateMachine[u2a_currentState].evtEntry) {
+ 256:	82 2f       	mov	r24, r18
+ 258:	93 2f       	mov	r25, r19
+ 25a:	88 0f       	add	r24, r24
+ 25c:	99 1f       	adc	r25, r25
+ 25e:	fc 01       	movw	r30, r24
+ 260:	ee 0f       	add	r30, r30
+ 262:	ff 1f       	adc	r31, r31
+ 264:	ee 0f       	add	r30, r30
+ 266:	ff 1f       	adc	r31, r31
+ 268:	ee 0f       	add	r30, r30
+ 26a:	ff 1f       	adc	r31, r31
+ 26c:	8e 0f       	add	r24, r30
+ 26e:	9f 1f       	adc	r25, r31
+ 270:	fc 01       	movw	r30, r24
+ 272:	ee 5e       	subi	r30, 0xEE	; 238
+ 274:	fe 4f       	sbci	r31, 0xFE	; 254
+ 276:	06 84       	ldd	r0, Z+14	; 0x0e
+ 278:	f7 85       	ldd	r31, Z+15	; 0x0f
+ 27a:	e0 2d       	mov	r30, r0
+ 27c:	30 97       	sbiw	r30, 0x00	; 0
+ 27e:	21 f0       	breq	.+8      	; 0x288 <Apl_gpioChangeState+0x7a>
+		Apl_stateMachine[u2a_currentState].evtEntry(currenstate, NULL);
+ 280:	60 e0       	ldi	r22, 0x00	; 0
+ 282:	70 e0       	ldi	r23, 0x00	; 0
+ 284:	ce 01       	movw	r24, r28
+ 286:	09 95       	icall
+	}
+}
+ 288:	df 91       	pop	r29
+ 28a:	cf 91       	pop	r28
+ 28c:	08 95       	ret
+
+0000028e <Apl_getCurrentSts>:
+	}
+}
+
+uint16 Apl_getCurrentSts(void)
+{
+	return Apl_gpioCurrentSts;
+ 28e:	80 91 7f 01 	lds	r24, 0x017F	; 0x80017f <Apl_gpioCurrentSts>
+ 292:	90 e0       	ldi	r25, 0x00	; 0
+ 294:	08 95       	ret
+
+00000296 <Apl_setEvt>:
+	if (NULL != Apl_stateMachine[u2a_currentState].evtEntry) {
+		Apl_stateMachine[u2a_currentState].evtEntry(currenstate, NULL);
+	}
+}
+
+void Apl_setEvt(uint8 evtJob, void* para) {
+ 296:	0f 93       	push	r16
+ 298:	1f 93       	push	r17
+ 29a:	cf 93       	push	r28
+ 29c:	c8 2f       	mov	r28, r24
+ 29e:	8b 01       	movw	r16, r22
+	uint16 CurrentSts;
+	
+	MainControlSts Controller;
+
+	CurrentSts = Apl_getCurrentSts();
+ 2a0:	f6 df       	rcall	.-20     	; 0x28e <Apl_getCurrentSts>
+	
+	Controller = NULL;
+	
+	switch (evtJob)
+ 2a2:	4c 2f       	mov	r20, r28
+ 2a4:	50 e0       	ldi	r21, 0x00	; 0
+ 2a6:	49 30       	cpi	r20, 0x09	; 9
+ 2a8:	51 05       	cpc	r21, r1
+ 2aa:	08 f0       	brcs	.+2      	; 0x2ae <Apl_setEvt+0x18>
+ 2ac:	a6 c0       	rjmp	.+332    	; 0x3fa <Apl_setEvt+0x164>
+ 2ae:	fa 01       	movw	r30, r20
+ 2b0:	ea 5b       	subi	r30, 0xBA	; 186
+ 2b2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2b4:	4c c2       	rjmp	.+1176   	; 0x74e <__tablejump2__>
+	{
+		case APL_EXECUTE_EVENT_GOSTRAIGHT:
+		{
+			Controller = Apl_stateMachine[CurrentSts].evtGoStraight;
+ 2b6:	fc 01       	movw	r30, r24
+ 2b8:	ee 0f       	add	r30, r30
+ 2ba:	ff 1f       	adc	r31, r31
+ 2bc:	9f 01       	movw	r18, r30
+ 2be:	22 0f       	add	r18, r18
+ 2c0:	33 1f       	adc	r19, r19
+ 2c2:	22 0f       	add	r18, r18
+ 2c4:	33 1f       	adc	r19, r19
+ 2c6:	22 0f       	add	r18, r18
+ 2c8:	33 1f       	adc	r19, r19
+ 2ca:	e2 0f       	add	r30, r18
+ 2cc:	f3 1f       	adc	r31, r19
+ 2ce:	ee 5e       	subi	r30, 0xEE	; 238
+ 2d0:	fe 4f       	sbci	r31, 0xFE	; 254
+ 2d2:	01 90       	ld	r0, Z+
+ 2d4:	f0 81       	ld	r31, Z
+ 2d6:	e0 2d       	mov	r30, r0
+			break;
+ 2d8:	92 c0       	rjmp	.+292    	; 0x3fe <Apl_setEvt+0x168>
+		}
+		case APL_EXECUTE_EVENT_WAITGOSTRAIGHT:
+		{
+			Controller = Apl_stateMachine[CurrentSts].evtWaitGoStraight;
+ 2da:	fc 01       	movw	r30, r24
+ 2dc:	ee 0f       	add	r30, r30
+ 2de:	ff 1f       	adc	r31, r31
+ 2e0:	9f 01       	movw	r18, r30
+ 2e2:	22 0f       	add	r18, r18
+ 2e4:	33 1f       	adc	r19, r19
+ 2e6:	22 0f       	add	r18, r18
+ 2e8:	33 1f       	adc	r19, r19
+ 2ea:	22 0f       	add	r18, r18
+ 2ec:	33 1f       	adc	r19, r19
+ 2ee:	e2 0f       	add	r30, r18
+ 2f0:	f3 1f       	adc	r31, r19
+ 2f2:	ee 5e       	subi	r30, 0xEE	; 238
+ 2f4:	fe 4f       	sbci	r31, 0xFE	; 254
+ 2f6:	02 80       	ldd	r0, Z+2	; 0x02
+ 2f8:	f3 81       	ldd	r31, Z+3	; 0x03
+ 2fa:	e0 2d       	mov	r30, r0
+			break;
+ 2fc:	80 c0       	rjmp	.+256    	; 0x3fe <Apl_setEvt+0x168>
+		}
+		case APL_EXECUTE_EVENT_GOLEFT:
+		{
+			Controller = Apl_stateMachine[CurrentSts].evtGoLeft;
+ 2fe:	fc 01       	movw	r30, r24
+ 300:	ee 0f       	add	r30, r30
+ 302:	ff 1f       	adc	r31, r31
+ 304:	9f 01       	movw	r18, r30
+ 306:	22 0f       	add	r18, r18
+ 308:	33 1f       	adc	r19, r19
+ 30a:	22 0f       	add	r18, r18
+ 30c:	33 1f       	adc	r19, r19
+ 30e:	22 0f       	add	r18, r18
+ 310:	33 1f       	adc	r19, r19
+ 312:	e2 0f       	add	r30, r18
+ 314:	f3 1f       	adc	r31, r19
+ 316:	ee 5e       	subi	r30, 0xEE	; 238
+ 318:	fe 4f       	sbci	r31, 0xFE	; 254
+ 31a:	04 80       	ldd	r0, Z+4	; 0x04
+ 31c:	f5 81       	ldd	r31, Z+5	; 0x05
+ 31e:	e0 2d       	mov	r30, r0
+			break;
+ 320:	6e c0       	rjmp	.+220    	; 0x3fe <Apl_setEvt+0x168>
+		}
+		case APL_EXECUTE_EVENT_WAITGOLEFT:
+		{
+			Controller = Apl_stateMachine[CurrentSts].evtWaitGoLeft;
+ 322:	fc 01       	movw	r30, r24
+ 324:	ee 0f       	add	r30, r30
+ 326:	ff 1f       	adc	r31, r31
+ 328:	9f 01       	movw	r18, r30
+ 32a:	22 0f       	add	r18, r18
+ 32c:	33 1f       	adc	r19, r19
+ 32e:	22 0f       	add	r18, r18
+ 330:	33 1f       	adc	r19, r19
+ 332:	22 0f       	add	r18, r18
+ 334:	33 1f       	adc	r19, r19
+ 336:	e2 0f       	add	r30, r18
+ 338:	f3 1f       	adc	r31, r19
+ 33a:	ee 5e       	subi	r30, 0xEE	; 238
+ 33c:	fe 4f       	sbci	r31, 0xFE	; 254
+ 33e:	06 80       	ldd	r0, Z+6	; 0x06
+ 340:	f7 81       	ldd	r31, Z+7	; 0x07
+ 342:	e0 2d       	mov	r30, r0
+			break;
+ 344:	5c c0       	rjmp	.+184    	; 0x3fe <Apl_setEvt+0x168>
+		}
+		case APL_EXECUTE_EVENT_GORIGHT:
+		{
+			Controller = Apl_stateMachine[CurrentSts].evtGoRight;
+ 346:	fc 01       	movw	r30, r24
+ 348:	ee 0f       	add	r30, r30
+ 34a:	ff 1f       	adc	r31, r31
+ 34c:	9f 01       	movw	r18, r30
+ 34e:	22 0f       	add	r18, r18
+ 350:	33 1f       	adc	r19, r19
+ 352:	22 0f       	add	r18, r18
+ 354:	33 1f       	adc	r19, r19
+ 356:	22 0f       	add	r18, r18
+ 358:	33 1f       	adc	r19, r19
+ 35a:	e2 0f       	add	r30, r18
+ 35c:	f3 1f       	adc	r31, r19
+ 35e:	ee 5e       	subi	r30, 0xEE	; 238
+ 360:	fe 4f       	sbci	r31, 0xFE	; 254
+ 362:	00 84       	ldd	r0, Z+8	; 0x08
+ 364:	f1 85       	ldd	r31, Z+9	; 0x09
+ 366:	e0 2d       	mov	r30, r0
+			break;
+ 368:	4a c0       	rjmp	.+148    	; 0x3fe <Apl_setEvt+0x168>
+		}
+		case APL_EXECUTE_EVENT_WAITGORIGHT:
+		{
+			Controller = Apl_stateMachine[CurrentSts].evtWaitGoRigth;
+ 36a:	fc 01       	movw	r30, r24
+ 36c:	ee 0f       	add	r30, r30
+ 36e:	ff 1f       	adc	r31, r31
+ 370:	9f 01       	movw	r18, r30
+ 372:	22 0f       	add	r18, r18
+ 374:	33 1f       	adc	r19, r19
+ 376:	22 0f       	add	r18, r18
+ 378:	33 1f       	adc	r19, r19
+ 37a:	22 0f       	add	r18, r18
+ 37c:	33 1f       	adc	r19, r19
+ 37e:	e2 0f       	add	r30, r18
+ 380:	f3 1f       	adc	r31, r19
+ 382:	ee 5e       	subi	r30, 0xEE	; 238
+ 384:	fe 4f       	sbci	r31, 0xFE	; 254
+ 386:	02 84       	ldd	r0, Z+10	; 0x0a
+ 388:	f3 85       	ldd	r31, Z+11	; 0x0b
+ 38a:	e0 2d       	mov	r30, r0
+			break;
+ 38c:	38 c0       	rjmp	.+112    	; 0x3fe <Apl_setEvt+0x168>
+		}
+		case APL_EXECUTE_EVENT_COM:
+		{
+			Controller = Apl_stateMachine[CurrentSts].evtJob;
+ 38e:	fc 01       	movw	r30, r24
+ 390:	ee 0f       	add	r30, r30
+ 392:	ff 1f       	adc	r31, r31
+ 394:	9f 01       	movw	r18, r30
+ 396:	22 0f       	add	r18, r18
+ 398:	33 1f       	adc	r19, r19
+ 39a:	22 0f       	add	r18, r18
+ 39c:	33 1f       	adc	r19, r19
+ 39e:	22 0f       	add	r18, r18
+ 3a0:	33 1f       	adc	r19, r19
+ 3a2:	e2 0f       	add	r30, r18
+ 3a4:	f3 1f       	adc	r31, r19
+ 3a6:	ee 5e       	subi	r30, 0xEE	; 238
+ 3a8:	fe 4f       	sbci	r31, 0xFE	; 254
+ 3aa:	04 84       	ldd	r0, Z+12	; 0x0c
+ 3ac:	f5 85       	ldd	r31, Z+13	; 0x0d
+ 3ae:	e0 2d       	mov	r30, r0
+			break;
+ 3b0:	26 c0       	rjmp	.+76     	; 0x3fe <Apl_setEvt+0x168>
+		}
+		case APL_EXECUTE_EVENT_ENTRY:
+		{
+			Controller = Apl_stateMachine[CurrentSts].evtEntry;
+ 3b2:	fc 01       	movw	r30, r24
+ 3b4:	ee 0f       	add	r30, r30
+ 3b6:	ff 1f       	adc	r31, r31
+ 3b8:	9f 01       	movw	r18, r30
+ 3ba:	22 0f       	add	r18, r18
+ 3bc:	33 1f       	adc	r19, r19
+ 3be:	22 0f       	add	r18, r18
+ 3c0:	33 1f       	adc	r19, r19
+ 3c2:	22 0f       	add	r18, r18
+ 3c4:	33 1f       	adc	r19, r19
+ 3c6:	e2 0f       	add	r30, r18
+ 3c8:	f3 1f       	adc	r31, r19
+ 3ca:	ee 5e       	subi	r30, 0xEE	; 238
+ 3cc:	fe 4f       	sbci	r31, 0xFE	; 254
+ 3ce:	06 84       	ldd	r0, Z+14	; 0x0e
+ 3d0:	f7 85       	ldd	r31, Z+15	; 0x0f
+ 3d2:	e0 2d       	mov	r30, r0
+			break;
+ 3d4:	14 c0       	rjmp	.+40     	; 0x3fe <Apl_setEvt+0x168>
+		}
+		case APL_EXECUTE_EVENT_EXIT:
+		{
+			Controller = Apl_stateMachine[CurrentSts].evtExit;
+ 3d6:	fc 01       	movw	r30, r24
+ 3d8:	ee 0f       	add	r30, r30
+ 3da:	ff 1f       	adc	r31, r31
+ 3dc:	9f 01       	movw	r18, r30
+ 3de:	22 0f       	add	r18, r18
+ 3e0:	33 1f       	adc	r19, r19
+ 3e2:	22 0f       	add	r18, r18
+ 3e4:	33 1f       	adc	r19, r19
+ 3e6:	22 0f       	add	r18, r18
+ 3e8:	33 1f       	adc	r19, r19
+ 3ea:	e2 0f       	add	r30, r18
+ 3ec:	f3 1f       	adc	r31, r19
+ 3ee:	ee 5e       	subi	r30, 0xEE	; 238
+ 3f0:	fe 4f       	sbci	r31, 0xFE	; 254
+ 3f2:	00 88       	ldd	r0, Z+16	; 0x10
+ 3f4:	f1 89       	ldd	r31, Z+17	; 0x11
+ 3f6:	e0 2d       	mov	r30, r0
+			break;
+ 3f8:	02 c0       	rjmp	.+4      	; 0x3fe <Apl_setEvt+0x168>
+	
+	MainControlSts Controller;
+
+	CurrentSts = Apl_getCurrentSts();
+	
+	Controller = NULL;
+ 3fa:	e0 e0       	ldi	r30, 0x00	; 0
+ 3fc:	f0 e0       	ldi	r31, 0x00	; 0
+		default:
+			break;
+		
+	}
+
+	if (NULL != Controller) {
+ 3fe:	30 97       	sbiw	r30, 0x00	; 0
+ 400:	11 f0       	breq	.+4      	; 0x406 <__LOCK_REGION_LENGTH__+0x6>
+		Controller(CurrentSts, para);
+ 402:	b8 01       	movw	r22, r16
+ 404:	09 95       	icall
+	}
+}
+ 406:	cf 91       	pop	r28
+ 408:	1f 91       	pop	r17
+ 40a:	0f 91       	pop	r16
+ 40c:	08 95       	ret
+
+0000040e <Apl_mainIdle_EvReqGoStraight>:
+
+#include "Apl_MainTskIdle.h"
+
+void Apl_mainIdle_EvReqGoStraight(uint16 currentState, void* para)
+{
+	Apl_gpioChangeState(APL_TASKLIST_GOSTRAIGHT, NULL);
+ 40e:	60 e0       	ldi	r22, 0x00	; 0
+ 410:	70 e0       	ldi	r23, 0x00	; 0
+ 412:	81 e0       	ldi	r24, 0x01	; 1
+ 414:	90 e0       	ldi	r25, 0x00	; 0
+ 416:	fb ce       	rjmp	.-522    	; 0x20e <Apl_gpioChangeState>
+ 418:	08 95       	ret
+
+0000041a <Apl_mainIdle_EvReqGoLeft>:
+	return;	
+}
+
+void Apl_mainIdle_EvReqGoLeft(uint16 currentState, void* para)
+{
+ 41a:	08 95       	ret
+
+0000041c <Apl_mainIdle_EvReqGoRight>:
+	return;
+}
+
+void Apl_mainIdle_EvReqGoRight(uint16 currentState, void* para)
+{
+ 41c:	08 95       	ret
+
+0000041e <Apl_mainIdle_EvJob>:
+	return;
+}
+
+void Apl_mainIdle_EvJob(uint16 currentState, void* para)
 {
 	clr_LCD();
  41e:	cc d0       	rcall	.+408    	; 0x5b8 <clr_LCD>
@@ -845,79 +849,75 @@ void Apl_mainGoStraightWait_EvJob(uint16 currentState, void* para)
  420:	60 e0       	ldi	r22, 0x00	; 0
  422:	80 e0       	ldi	r24, 0x00	; 0
  424:	a9 d0       	rcall	.+338    	; 0x578 <move_LCD>
-	printf_LCD("State GO STRAIGHT");
- 426:	83 e5       	ldi	r24, 0x53	; 83
+	printf_LCD("State IDLE");
+ 426:	8a e5       	ldi	r24, 0x5A	; 90
  428:	91 e0       	ldi	r25, 0x01	; 1
  42a:	9f 93       	push	r25
  42c:	8f 93       	push	r24
  42e:	e3 d0       	rcall	.+454    	; 0x5f6 <printf_LCD>
 
-	PORTE |= (1<<PE5);
+	PORTE |= (1<<PE4);
  430:	83 b1       	in	r24, 0x03	; 3
- 432:	80 62       	ori	r24, 0x20	; 32
+ 432:	80 61       	ori	r24, 0x10	; 16
  434:	83 b9       	out	0x03, r24	; 3
  436:	2f ef       	ldi	r18, 0xFF	; 255
  438:	8f e7       	ldi	r24, 0x7F	; 127
- 43a:	94 e0       	ldi	r25, 0x04	; 4
+ 43a:	96 e1       	ldi	r25, 0x16	; 22
  43c:	21 50       	subi	r18, 0x01	; 1
  43e:	80 40       	sbci	r24, 0x00	; 0
  440:	90 40       	sbci	r25, 0x00	; 0
- 442:	e1 f7       	brne	.-8      	; 0x43c <Apl_mainGoStraightWait_EvJob+0x1e>
- 444:	00 c0       	rjmp	.+0      	; 0x446 <Apl_mainGoStraightWait_EvJob+0x28>
+ 442:	e1 f7       	brne	.-8      	; 0x43c <Apl_mainIdle_EvJob+0x1e>
+ 444:	00 c0       	rjmp	.+0      	; 0x446 <Apl_mainIdle_EvJob+0x28>
  446:	00 00       	nop
-	_delay_ms(200);
-	PORTE &= ~(1<<PE5);
+	_delay_ms(1000);
+	PORTE &= ~(1<<PE4);
  448:	83 b1       	in	r24, 0x03	; 3
- 44a:	8f 7d       	andi	r24, 0xDF	; 223
+ 44a:	8f 7e       	andi	r24, 0xEF	; 239
  44c:	83 b9       	out	0x03, r24	; 3
  44e:	2f ef       	ldi	r18, 0xFF	; 255
  450:	8f e7       	ldi	r24, 0x7F	; 127
- 452:	94 e0       	ldi	r25, 0x04	; 4
+ 452:	96 e1       	ldi	r25, 0x16	; 22
  454:	21 50       	subi	r18, 0x01	; 1
  456:	80 40       	sbci	r24, 0x00	; 0
  458:	90 40       	sbci	r25, 0x00	; 0
- 45a:	e1 f7       	brne	.-8      	; 0x454 <Apl_mainGoStraightWait_EvJob+0x36>
- 45c:	00 c0       	rjmp	.+0      	; 0x45e <Apl_mainGoStraightWait_EvJob+0x40>
+ 45a:	e1 f7       	brne	.-8      	; 0x454 <Apl_mainIdle_EvJob+0x36>
+ 45c:	00 c0       	rjmp	.+0      	; 0x45e <Apl_mainIdle_EvJob+0x40>
  45e:	00 00       	nop
-	_delay_ms(200);
+	_delay_ms(1000);
 	
 	++Apl_Counter;
  460:	80 91 82 01 	lds	r24, 0x0182	; 0x800182 <Apl_Counter>
  464:	8f 5f       	subi	r24, 0xFF	; 255
  466:	80 93 82 01 	sts	0x0182, r24	; 0x800182 <Apl_Counter>
 	
-	if (10u == Apl_Counter) {
+	if (3u == Apl_Counter) {
  46a:	0f 90       	pop	r0
  46c:	0f 90       	pop	r0
- 46e:	8a 30       	cpi	r24, 0x0A	; 10
- 470:	21 f4       	brne	.+8      	; 0x47a <Apl_mainGoStraightWait_EvJob+0x5c>
-		Apl_FlagCom = E_OK;
- 472:	10 92 83 01 	sts	0x0183, r1	; 0x800183 <Apl_FlagCom>
+ 46e:	83 30       	cpi	r24, 0x03	; 3
+ 470:	41 f4       	brne	.+16     	; 0x482 <Apl_mainIdle_EvJob+0x64>
+		ControllerUnit->flag = ARG_TRUE;
+ 472:	e0 91 80 01 	lds	r30, 0x0180	; 0x800180 <ControllerUnit>
+ 476:	f0 91 81 01 	lds	r31, 0x0181	; 0x800181 <ControllerUnit+0x1>
+ 47a:	81 e0       	ldi	r24, 0x01	; 1
+ 47c:	84 83       	std	Z+4, r24	; 0x04
 		Apl_Counter = 0;
- 476:	10 92 82 01 	sts	0x0182, r1	; 0x800182 <Apl_Counter>
-	}
-	
-    Apl_setEvt(APL_EXECUTE_EVENT_WAITGOSTRAIGHT, NULL);
- 47a:	60 e0       	ldi	r22, 0x00	; 0
- 47c:	70 e0       	ldi	r23, 0x00	; 0
- 47e:	81 e0       	ldi	r24, 0x01	; 1
- 480:	a9 ce       	rjmp	.-686    	; 0x1d4 <Apl_setEvt>
+ 47e:	10 92 82 01 	sts	0x0182, r1	; 0x800182 <Apl_Counter>
  482:	08 95       	ret
 
-00000484 <Apl_mainGoStraightWait_entry>:
-	
+00000484 <Apl_mainIdle_entry>:
 	return;
 }
 
-void Apl_mainGoStraightWait_entry(uint16 currentState, void* para)
+
+void Apl_mainIdle_entry(uint16 currentState, void* para)
 {
  484:	08 95       	ret
 
-00000486 <Apl_mainGoStraightWait_exit>:
+00000486 <Apl_mainIdle_exit>:
 	return;
 }
 
-void Apl_mainGoStraightWait_exit(uint16 currentState, void* para)
+void Apl_mainIdle_exit(uint16 currentState, void* para)
 {
  486:	08 95       	ret
 
@@ -1314,7 +1314,7 @@ int main(void) {
 	
 	while(1) {
 		Apl_mainTask();
- 658:	b6 de       	rcall	.-660    	; 0x3c6 <Apl_mainTask>
+ 658:	79 dd       	rcall	.-1294   	; 0x14c <Apl_mainTask>
  65a:	fe cf       	rjmp	.-4      	; 0x658 <main+0x2>
 
 0000065c <f_setchanel>:

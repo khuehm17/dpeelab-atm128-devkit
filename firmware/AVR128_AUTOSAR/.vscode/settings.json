@@ -1,5 +1,10 @@
 {
     "files.associations": {
-        "aes128.h": "c"
+        "aes128.h": "c",
+        "apl_init.h": "c",
+        "complex.h": "c",
+        "eeprom.h": "c",
+        "apl_tasklistmain.h": "c",
+        "assert.h": "c"
     }
 }
