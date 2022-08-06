@@ -127,7 +127,6 @@
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>../BSW</Value>
       <Value>../MCAL</Value>
       <Value>../Platform</Value>
       <Value>..</Value>
@@ -138,6 +137,12 @@
       <Value>../Apl/Crypto</Value>
       <Value>../Apl/Network</Value>
       <Value>../Apl/ControlUnit</Value>
+      <Value>../microsar/BswM</Value>
+      <Value>../microsar</Value>
+      <Value>../microsar/OS</Value>
+      <Value>../microsar/UART</Value>
+      <Value>../Apl/Peripheral</Value>
+      <Value>../Apl/Com</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -187,6 +192,12 @@
     <Compile Include="Apl\Apl_TaskListMain.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Apl\Com\floatToString.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Apl\Com\floatToString.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Apl\ControlUnit\Apl_goLeftWait.c">
       <SubType>compile</SubType>
     </Compile>
@@ -223,12 +234,6 @@
     <Compile Include="Apl\Crypto\AES_ECB_Mode.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apl\floatToString.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apl\floatToString.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="Apl\Network\Apl_uartFFSend.c">
       <SubType>compile</SubType>
     </Compile>
@@ -241,28 +246,28 @@
     <Compile Include="Apl\Network\Apl_uartSendFFWait.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="BSW\Bsw.c">
+    <Compile Include="Apl\Peripheral\liquid_crystal_i2c.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="BSW\Bsw.h">
+    <Compile Include="Apl\Peripheral\liquid_crystal_i2c.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="BSW\BSW_UART.c">
+    <Compile Include="Apl\Peripheral\myLCD.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="BSW\BSW_UART.h">
+    <Compile Include="Apl\Peripheral\myLCD.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="BSW\liquid_crystal_i2c.c">
+    <Compile Include="microsar\BswM\Bsw.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="BSW\liquid_crystal_i2c.h">
+    <Compile Include="microsar\BswM\Bsw.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="BSW\myLCD.c">
+    <Compile Include="microsar\OS\os.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="BSW\myLCD.h">
+    <Compile Include="microsar\OS\os.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Lib\stdutils.h">
@@ -275,6 +280,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\adc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\eeprom.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\eeprom.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\gpt.c">
@@ -301,6 +312,12 @@
     <Compile Include="MCAL\UART.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="microsar\UART\BSW_UART.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="microsar\UART\BSW_UART.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Platform\Platform_Types.h">
       <SubType>compile</SubType>
     </Compile>
@@ -312,13 +329,26 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Apl\CRC\CRC32" />
+    <Folder Include="Apl\CRC\CRC16" />
+    <Folder Include="Apl\CRC\CRC8" />
     <Folder Include="Apl\Network" />
     <Folder Include="Apl\Crypto" />
     <Folder Include="Apl\ControlUnit" />
+    <Folder Include="Apl\Com" />
+    <Folder Include="Apl\CRC" />
+    <Folder Include="Apl\Peripheral" />
+    <Folder Include="df\public" />
+    <Folder Include="microsar\BswM" />
+    <Folder Include="microsar\UART" />
+    <Folder Include="microsar\OS" />
+    <Folder Include="df\eel" />
+    <Folder Include="df\fdl" />
     <Folder Include="MCAL" />
-    <Folder Include="BSW" />
+    <Folder Include="microsar" />
     <Folder Include="Apl" />
     <Folder Include="Lib" />
+    <Folder Include="df" />
     <Folder Include="user" />
     <Folder Include="Platform" />
   </ItemGroup>

@@ -12,7 +12,6 @@
 #include <avr/io.h>
 #include <stdlib.h>
 #include <string.h>
-#include "floatToString.h"
 #include <myLCD.h>
 #include <BSW_UART.h>
 #include "liquid_crystal_i2c.h"

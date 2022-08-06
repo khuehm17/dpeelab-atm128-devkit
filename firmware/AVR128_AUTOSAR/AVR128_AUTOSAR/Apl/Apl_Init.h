@@ -10,6 +10,7 @@
 #define APL_INIT_H_
 
 #include <Bsw.h>
+#include "floatToString.h"
 #include "Apl_Public_Variable.h"
 #include "Apl_mainControlTsk.h"
 
