@@ -11,6 +11,7 @@
 
 #include <Std_Type.h>
 
-
+#define max_value_16bits 0xFFFFu
+#define timer_prescaler  1u
 
 #endif /* GPT_H_ */

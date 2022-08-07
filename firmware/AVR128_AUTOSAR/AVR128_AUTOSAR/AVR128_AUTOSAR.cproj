@@ -216,24 +216,6 @@
     <Compile Include="Apl\ControlUnit\Apl_Public_Variable.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apl\Crypto\aes128.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apl\Crypto\aes128.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apl\Crypto\AES_CBC_Mode.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apl\Crypto\AES_CBC_Mode.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apl\Crypto\AES_ECB_Mode.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apl\Crypto\AES_ECB_Mode.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="Apl\Network\Apl_uartFFSend.c">
       <SubType>compile</SubType>
     </Compile>
@@ -256,6 +238,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apl\Peripheral\myLCD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\pwm.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\pwm.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="microsar\BswM\Bsw.c">

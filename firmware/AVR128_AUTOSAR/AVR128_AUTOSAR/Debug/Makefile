@@ -73,13 +73,11 @@ C_SRCS +=  \
 ../Apl/ControlUnit/Apl_goStraightWait.c \
 ../Apl/ControlUnit/Apl_mainControlTsk.c \
 ../Apl/ControlUnit/Apl_MainTskIdle.c \
-../Apl/Crypto/aes128.c \
-../Apl/Crypto/AES_CBC_Mode.c \
-../Apl/Crypto/AES_ECB_Mode.c \
 ../Apl/Network/Apl_uartFFSend.c \
 ../Apl/Network/Apl_uartSendFFWait.c \
 ../Apl/Peripheral/liquid_crystal_i2c.c \
 ../Apl/Peripheral/myLCD.c \
+../MCAL/pwm.c \
 ../microsar/BswM/Bsw.c \
 ../microsar/OS/os.c \
 ../main.c \
@@ -113,13 +111,11 @@ Apl/ControlUnit/Apl_goRightWait.o \
 Apl/ControlUnit/Apl_goStraightWait.o \
 Apl/ControlUnit/Apl_mainControlTsk.o \
 Apl/ControlUnit/Apl_MainTskIdle.o \
-Apl/Crypto/aes128.o \
-Apl/Crypto/AES_CBC_Mode.o \
-Apl/Crypto/AES_ECB_Mode.o \
 Apl/Network/Apl_uartFFSend.o \
 Apl/Network/Apl_uartSendFFWait.o \
 Apl/Peripheral/liquid_crystal_i2c.o \
 Apl/Peripheral/myLCD.o \
+MCAL/pwm.o \
 microsar/BswM/Bsw.o \
 microsar/OS/os.o \
 main.o \
@@ -146,13 +142,11 @@ Apl/ControlUnit/Apl_goRightWait.o \
 Apl/ControlUnit/Apl_goStraightWait.o \
 Apl/ControlUnit/Apl_mainControlTsk.o \
 Apl/ControlUnit/Apl_MainTskIdle.o \
-Apl/Crypto/aes128.o \
-Apl/Crypto/AES_CBC_Mode.o \
-Apl/Crypto/AES_ECB_Mode.o \
 Apl/Network/Apl_uartFFSend.o \
 Apl/Network/Apl_uartSendFFWait.o \
 Apl/Peripheral/liquid_crystal_i2c.o \
 Apl/Peripheral/myLCD.o \
+MCAL/pwm.o \
 microsar/BswM/Bsw.o \
 microsar/OS/os.o \
 main.o \
@@ -179,13 +173,11 @@ Apl/ControlUnit/Apl_goRightWait.d \
 Apl/ControlUnit/Apl_goStraightWait.d \
 Apl/ControlUnit/Apl_mainControlTsk.d \
 Apl/ControlUnit/Apl_MainTskIdle.d \
-Apl/Crypto/aes128.d \
-Apl/Crypto/AES_CBC_Mode.d \
-Apl/Crypto/AES_ECB_Mode.d \
 Apl/Network/Apl_uartFFSend.d \
 Apl/Network/Apl_uartSendFFWait.d \
 Apl/Peripheral/liquid_crystal_i2c.d \
 Apl/Peripheral/myLCD.d \
+MCAL/pwm.d \
 microsar/BswM/Bsw.d \
 microsar/OS/os.d \
 main.d \
@@ -212,13 +204,11 @@ Apl/ControlUnit/Apl_goRightWait.d \
 Apl/ControlUnit/Apl_goStraightWait.d \
 Apl/ControlUnit/Apl_mainControlTsk.d \
 Apl/ControlUnit/Apl_MainTskIdle.d \
-Apl/Crypto/aes128.d \
-Apl/Crypto/AES_CBC_Mode.d \
-Apl/Crypto/AES_ECB_Mode.d \
 Apl/Network/Apl_uartFFSend.d \
 Apl/Network/Apl_uartSendFFWait.d \
 Apl/Peripheral/liquid_crystal_i2c.d \
 Apl/Peripheral/myLCD.d \
+MCAL/pwm.d \
 microsar/BswM/Bsw.d \
 microsar/OS/os.d \
 main.d \
@@ -306,27 +296,6 @@ Apl/ControlUnit/Apl_MainTskIdle.o: ../Apl/ControlUnit/Apl_MainTskIdle.c
 	@echo Finished building: $<
 	
 
-Apl/Crypto/aes128.o: ../Apl/Crypto/aes128.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-Apl/Crypto/AES_CBC_Mode.o: ../Apl/Crypto/AES_CBC_Mode.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-Apl/Crypto/AES_ECB_Mode.o: ../Apl/Crypto/AES_ECB_Mode.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
 Apl/Network/Apl_uartFFSend.o: ../Apl/Network/Apl_uartFFSend.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -349,6 +318,13 @@ Apl/Peripheral/liquid_crystal_i2c.o: ../Apl/Peripheral/liquid_crystal_i2c.c
 	
 
 Apl/Peripheral/myLCD.o: ../Apl/Peripheral/myLCD.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/pwm.o: ../MCAL/pwm.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../Platform" -I".." -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../Apl" -I"../user" -I"../Lib" -I"../Apl/Crypto" -I"../Apl/Network" -I"../Apl/ControlUnit" -I"../microsar/BswM" -I"../microsar" -I"../microsar/OS" -I"../microsar/UART" -I"../Apl/Peripheral" -I"../Apl/Com"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

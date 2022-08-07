@@ -18,12 +18,6 @@ Apl\ControlUnit\Apl_mainControlTsk.c
 
 Apl\ControlUnit\Apl_MainTskIdle.c
 
-Apl\Crypto\aes128.c
-
-Apl\Crypto\AES_CBC_Mode.c
-
-Apl\Crypto\AES_ECB_Mode.c
-
 Apl\Network\Apl_uartFFSend.c
 
 Apl\Network\Apl_uartSendFFWait.c
@@ -31,6 +25,8 @@ Apl\Network\Apl_uartSendFFWait.c
 Apl\Peripheral\liquid_crystal_i2c.c
 
 Apl\Peripheral\myLCD.c
+
+MCAL\pwm.c
 
 microsar\BswM\Bsw.c
 
