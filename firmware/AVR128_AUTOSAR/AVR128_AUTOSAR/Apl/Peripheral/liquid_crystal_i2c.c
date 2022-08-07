@@ -10,6 +10,13 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
+/**
+  * @brief  lq_init
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 LiquidCrystalDevice_t lq_init(uint8 address, uint8 columns, uint8 rows, uint8 dotSize)
 {
 	LiquidCrystalDevice_t device;

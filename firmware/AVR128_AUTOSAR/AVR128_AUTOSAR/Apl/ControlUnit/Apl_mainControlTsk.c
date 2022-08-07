@@ -59,7 +59,13 @@ static const DC_Controller_sts Apl_stateMachine[STATE_MAXNUMBER] =
 	}
 };
 
-
+/**
+  * @brief  Apl_gpioChangeState
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 void Apl_gpioChangeState(uint16 currenstate, void* para)
 {
 	uint16 u2a_currentState;
@@ -82,6 +88,13 @@ void Apl_gpioChangeState(uint16 currenstate, void* para)
 	}
 }
 
+/**
+  * @brief  Apl_setEvt
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 void Apl_setEvt(uint8 evtJob, void* para) {
 	uint16 CurrentSts;
 	
@@ -148,6 +161,13 @@ void Apl_setEvt(uint8 evtJob, void* para) {
 	}
 }
 
+/**
+  * @brief  Apl_getCurrentSts
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 uint16 Apl_getCurrentSts(void)
 {
 	return Apl_gpioCurrentSts;

@@ -6,3 +6,11 @@
  */ 
 
 #include <gpt.h>
+
+//void Gpt_Init(const Gpt_ConfigType* ConfigPtr) {
+	//
+//}
+//
+//void Gpt_DeInit(const Gpt_ConfigType* ConfigPtr) {
+	//
+//}

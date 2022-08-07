@@ -7,6 +7,13 @@
 #include "Apl_goStraightWait.h"
 #include "Apl_Public_Variable.h"
 
+/**
+  * @brief  Apl_mainGoStraightWait_EvEnd
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 void Apl_mainGoStraightWait_EvEnd(uint16 currentState, void* para)
 {
 	if (E_OK == Apl_FlagCom) {
@@ -16,11 +23,18 @@ void Apl_mainGoStraightWait_EvEnd(uint16 currentState, void* para)
 	return;
 }
 
+/**
+  * @brief  Apl_mainGoStraightWait_EvJob
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 void Apl_mainGoStraightWait_EvJob(uint16 currentState, void* para)
 {
 	clr_LCD();
 	move_LCD(0,0);
-	printf_LCD("State GO STRAIGHT");
+	printf_LCD("Sts GO STRAIGHT");
 
 	PORTE |= (1<<PE5);
 	_delay_ms(200);
@@ -39,11 +53,25 @@ void Apl_mainGoStraightWait_EvJob(uint16 currentState, void* para)
 	return;
 }
 
+/**
+  * @brief  Apl_mainGoStraightWait_entry
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 void Apl_mainGoStraightWait_entry(uint16 currentState, void* para)
 {
 	return;
 }
 
+/**
+  * @brief  Apl_mainGoStraightWait_exit
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 void Apl_mainGoStraightWait_exit(uint16 currentState, void* para)
 {
 	return;

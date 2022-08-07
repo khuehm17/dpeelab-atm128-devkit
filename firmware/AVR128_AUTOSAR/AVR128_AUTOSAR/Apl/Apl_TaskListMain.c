@@ -8,6 +8,13 @@
 #include <Apl_TaskListMain.h>
 #include "Apl_Public_Variable.h"
 
+/**
+  * @brief  Apl_mainTask
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 void Apl_mainTask(void) {
 	
 	Apl_gpioChangeState(Apl_gpioCurrentSts, NULL);
@@ -19,4 +26,5 @@ void Apl_mainTask(void) {
 	
 	Apl_setEvt(APL_EXECUTE_EVENT_COM, NULL);
 }
+
 

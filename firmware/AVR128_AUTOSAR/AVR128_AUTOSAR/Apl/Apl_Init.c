@@ -9,7 +9,13 @@
 #include "string.h"
 #include "Apl_Public_Variable.h"
 
-
+/**
+  * @brief  Apl_mainTaskStateInit
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 void Apl_mainTaskStateInit(void)
 {
 	Apl_gpioCurrentSts = APL_TASKLIST_IDLE;
@@ -18,6 +24,13 @@ void Apl_mainTaskStateInit(void)
 	return;
 }
 
+/**
+  * @brief  Apl_networkInit
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 void Apl_networkInit(void)
 {
 	memset((void*)Apl_BufferRead, ZERO, sizeof(Apl_BufferRead));
@@ -25,6 +38,13 @@ void Apl_networkInit(void)
 	return;	
 }
 
+/**
+  * @brief  Apl_controllerUnitInit
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 void Apl_controllerUnitInit(void)
 {
 	memset((void*) ControllerUnit, 0, sizeof(ControllerStr));
@@ -38,6 +58,13 @@ void Apl_controllerUnitInit(void)
 	return;
 }
 
+/**
+  * @brief  Apl_Init
+  *         
+  * @param
+  * @param
+  * @retval
+  */
 void Apl_Init(void)
 {
 	BSW_driverInit();
