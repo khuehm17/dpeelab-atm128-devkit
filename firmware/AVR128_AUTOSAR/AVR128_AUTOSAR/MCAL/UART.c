@@ -5,7 +5,6 @@
  *  Author: ThoPH
  */ 
 
-#include <stdarg.h>
 #include "UART.h"
 
 #define C_MaxUartChannels_U8 2u

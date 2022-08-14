@@ -6,3 +6,9 @@
  */ 
 
 #include "UDS_wModeUser_SID11.h"
+#include "wdt.h"
+
+void shutdown(uint8 *para) {
+	wdt_enable(TIMEOUT_1S);
+	while (1);
+}

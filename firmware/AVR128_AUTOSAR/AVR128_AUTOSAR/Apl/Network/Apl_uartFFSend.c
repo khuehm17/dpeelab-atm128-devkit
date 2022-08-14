@@ -6,23 +6,15 @@
  */ 
 
 #include "Apl_uartFFSend.h"
+#include <string.h>
 
-void Apl_mainWriteWait_EvEndWrite(uint16 currentState, void* para)
+void Apl_UART_RECEIVE(UART_Struct *buffer)
 {
+    UART1_RxString(buffer->Apl_BufferRead);
 	return;
 }
 
-void Apl_mainWriteWait_EvJob(uint16 currentState, void* para)
-{
-	return;
-}
-
-void Apl_mainWriteWait_entry(uint16 currentState, void* para)
-{
-	return;
-}
-
-void Apl_mainWriteWait_exit(uint16 currentState, void* para)
+void Apl_UART_SEND(UART_Struct *buffer, uint16 size)
 {
 	return;
 }

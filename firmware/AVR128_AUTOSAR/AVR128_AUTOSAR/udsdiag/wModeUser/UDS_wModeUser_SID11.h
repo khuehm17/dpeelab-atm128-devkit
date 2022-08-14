@@ -11,6 +11,6 @@
 
 #include "Std_Type.h"
 
-
+void shutdown(uint8 *para);
 
 #endif /* UDS_WMODEUSER_SID11_H_ */

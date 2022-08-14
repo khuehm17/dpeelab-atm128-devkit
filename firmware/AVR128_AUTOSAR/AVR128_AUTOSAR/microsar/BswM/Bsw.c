@@ -13,15 +13,9 @@ static void IO_Init();
 //static void LCD_Init(LiquidCrystalDevice_t* module);
 static void f_uartInit(void);
 
-void IO_Init(){
-	DDRE = 0xFF;
-	DDRD |= (1<<PD4)|(1<<PD5);
-	
-	PORTE = 0x00;
-	PORTD &= ~((1<<PD4)|(1<<PD5));
-	
-	DDRB = 0xFF;
-	PORTB = 0x00;
+static void IO_Init(){
+	DDRE |= (1 << PE4) | (1 << PE5);
+	PORTE &= ~((1 << PE4) | (1 << PE5));
 }
 
 // void LCD_Init(LiquidCrystalDevice_t* module) {
@@ -29,18 +23,18 @@ void IO_Init(){
 // 	lq_turnOnBacklight(module);
 // }
 
-void f_uartInit(void) {
+static void f_uartInit(void) {
 	UART1_Init(9600);
 	return;
 }
 
 void BSW_driverInit(void)
 {
+	//WDT_Init(TIMEOUT_1S);
+	f_uartInit();
 	IO_Init();
 	//LCD_Init(&device);
 	init_LCD();
-	f_setchanel(0u);
-	f_adc_init();
-	f_uartInit();
+
 	return;
 }

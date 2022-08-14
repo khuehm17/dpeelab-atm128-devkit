@@ -11,6 +11,6 @@
 
 #include "Std_Type.h"
 
-
+void UDS_SID10changeSession(uint8 *para);
 
 #endif /* UDS_WMODEUSER_SID10_H_ */

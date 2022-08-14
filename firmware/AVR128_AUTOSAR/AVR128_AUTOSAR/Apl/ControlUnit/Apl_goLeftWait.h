@@ -10,11 +10,12 @@
 #define APL_GOLEFTWAIT_H_
 
 #include "Std_Type.h"
+#include "Bsw.h"
 
-void Apl_mainGoLeftWait_EvEnd(uint16 currentState, void* para);
-void Apl_mainGoLeftWait_EvJob(uint16 currentState, void* para);
-void Apl_mainGoLeftWait_entry(uint16 currentState, void* para);
-void Apl_mainGoLeftWait_exit(uint16 currentState, void* para);
+void Apl_mainGoLeftWait_EvEnd(void* para);
+void Apl_mainGoLeftWait_EvJob(void* para);
+void Apl_mainGoLeftWait_entry(void* para);
+void Apl_mainGoLeftWait_exit(void* para);
 
 
 #endif /* APL_GOLEFTWAIT_H_ */

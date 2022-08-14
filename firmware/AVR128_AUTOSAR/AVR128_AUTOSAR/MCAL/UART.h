@@ -11,6 +11,7 @@
 #include <Std_Type.h>
 #include <avr/io.h>
 #include "stdutils.h"
+#include <stdarg.h>
 
 #define C_MinBaudRate_U32 2400
 #define C_MaxBaudRate_U32 115200UL

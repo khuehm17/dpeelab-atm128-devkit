@@ -20,8 +20,6 @@ Apl\ControlUnit\Apl_MainTskIdle.c
 
 Apl\Network\Apl_uartFFSend.c
 
-Apl\Network\Apl_uartSendFFWait.c
-
 Apl\Peripheral\liquid_crystal_i2c.c
 
 Apl\Peripheral\myLCD.c

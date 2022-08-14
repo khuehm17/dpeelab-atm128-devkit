@@ -39,7 +39,7 @@ static const DC_Controller_sts Apl_stateMachine[STATE_MAXNUMBER] =
 		NULL,
 		NULL,
 		NULL,
-		Apl_mainGoLeftWait_EvEnd,
+		&Apl_mainGoLeftWait_EvEnd,
 		NULL,
 		NULL,
 		&Apl_mainGoLeftWait_EvJob,
@@ -52,10 +52,10 @@ static const DC_Controller_sts Apl_stateMachine[STATE_MAXNUMBER] =
 		NULL,
 		NULL,
 		NULL,
-		Apl_mainGoStraightWait_EvEnd,
-		&Apl_mainGoStraightWait_EvJob,
-		&Apl_mainGoStraightWait_entry,
-		&Apl_mainGoStraightWait_exit
+		&Apl_mainGoRightWait_EvEnd,
+		&Apl_mainGoRightWait_EvJob,
+		&Apl_mainGoRightWait_entry,
+		&Apl_mainGoRightWait_exit
 	}
 };
 
@@ -73,7 +73,7 @@ void Apl_gpioChangeState(uint16 currenstate, void* para)
 	u2a_currentState = currenstate;
 	
 	if (NULL != Apl_stateMachine[u2a_currentState].evtExit) {
-		Apl_stateMachine[currenstate].evtExit(u2a_currentState, NULL);
+		Apl_stateMachine[currenstate].evtExit(NULL);
 	}
 	
 	
@@ -84,7 +84,7 @@ void Apl_gpioChangeState(uint16 currenstate, void* para)
 	Apl_gpioCurrentSts = u2a_currentState;
 	
 	if (NULL != Apl_stateMachine[u2a_currentState].evtEntry) {
-		Apl_stateMachine[u2a_currentState].evtEntry(currenstate, NULL);
+		Apl_stateMachine[u2a_currentState].evtEntry(NULL);
 	}
 }
 
@@ -157,7 +157,7 @@ void Apl_setEvt(uint8 evtJob, void* para) {
 	}
 
 	if (NULL != Controller) {
-		Controller(CurrentSts, para);
+		Controller(para);
 	}
 }
 

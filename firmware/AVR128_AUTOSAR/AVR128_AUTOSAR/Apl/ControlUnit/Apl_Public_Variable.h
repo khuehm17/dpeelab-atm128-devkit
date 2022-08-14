@@ -15,6 +15,10 @@
 
 #define STATE_MAXNUMBER				4u
 
+#define APL_DEFAULT_SESSION			1u
+#define APL_PRO_SESSION			    2u
+#define APL_EXTEND_SESSION			3u
+
 #define APL_TASKLIST_IDLE			0u
 #define APL_TASKLIST_GOSTRAIGHT		1u
 #define APL_TASKLIST_GOLEFT			2u
@@ -36,7 +40,10 @@ typedef struct {
     uint8 ChanelA;
     uint8 chanelB;
     uint16 PMW;
-	uint8 flag;
+	uint8 goStraight;
+	uint8 goLeft;
+	uint8 goRight;
+	uint8 Session;
 }ControllerStr;
 
 typedef enum {
@@ -44,8 +51,6 @@ typedef enum {
 	CHANEL_SET
 }chanelControl;
 
-const uint8 Apl_BufferRead[MAX_BLOCK_READ];
-const uint8 Apl_BufferWrite[MAX_BLOCK_WRITE];
 ControllerStr *ControllerUnit;
 
 uint8 Apl_gpioCurrentSts;

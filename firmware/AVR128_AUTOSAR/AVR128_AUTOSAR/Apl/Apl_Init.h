@@ -13,6 +13,7 @@
 #include "floatToString.h"
 #include "Apl_Public_Variable.h"
 #include "Apl_mainControlTsk.h"
+#include "Apl_networkCfg.h"
 
 void Apl_Init(void);
 void Apl_controllerUnitInit(void);

@@ -14,6 +14,7 @@
 #include <string.h>
 #include <myLCD.h>
 #include <BSW_UART.h>
+#include "wdt.h"
 #include "liquid_crystal_i2c.h"
 #include <adc.h>
 #include <util/delay.h>

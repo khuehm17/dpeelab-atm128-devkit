@@ -5,6 +5,9 @@
  *  Author: ThoPH
  */ 
 
+#include "BSW_UART.h"
+#include "wdt.h"
+
 #if (Enable_UART_TxString==1)
 void UART_TxString(uint8 var_uartChannel_u8, uint8 *ptr_stringPointer_u8)
 {

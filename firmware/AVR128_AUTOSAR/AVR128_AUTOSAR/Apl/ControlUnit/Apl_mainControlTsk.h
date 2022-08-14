@@ -12,7 +12,7 @@
 #include <Std_Type.h>
 #include "Apl_Public_Variable.h"
 
-typedef void (*MainControlSts) (uint16 currentState, void* para);
+typedef void (*MainControlSts) (void* para);
 
 typedef struct {
 	MainControlSts evtGoStraight;

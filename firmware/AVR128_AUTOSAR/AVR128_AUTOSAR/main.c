@@ -9,8 +9,9 @@
 #include <Apl_Init.h>
 
 int main(void) {
-
+	
 	Apl_Init();
+	PORTE |= (1<<PE4);
 	
 	while(1) {
 		Apl_mainTask();

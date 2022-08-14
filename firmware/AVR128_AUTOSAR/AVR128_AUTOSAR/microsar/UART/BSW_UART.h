@@ -9,7 +9,6 @@
 #ifndef BSW_UART_H_
 #define BSW_UART_H_
 
-
 #include <UART.h>
 
 #define UART0_Init(baudrate) UART_Init(C_UartZero_U8,  baudrate)
@@ -25,7 +24,7 @@
 #define UART1_TxString(ptr) UART_TxString(C_UartOne_U8,   ptr)
 
 #define UART0_RxString(ptr) UART_RxString(C_UartZero_U8,  ptr)
-#define UART1_RxString(ptr) UART_RxString(C_UartOne_U8,   ptr)
+#define UART1_RxString(ptr) UART_RxString(C_UartOne_U8,  ptr)
 
 #define UART0_TxNumber(NumberSystem, Number, NoOfDigits)  UART_TxNumber(C_UartZero_U8,  NumberSystem, Number, NoOfDigits)
 #define UART1_TxNumber(NumberSystem, Number, NoOfDigits)  UART_TxNumber(C_UartOne_U8,   NumberSystem, Number, NoOfDigits)

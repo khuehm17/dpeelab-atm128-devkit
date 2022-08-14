@@ -10,7 +10,9 @@
 #define UDS_WMODEUSER_SID14_H_
 
 #include "Std_Type.h"
+#include <Apl_Public_Variable.h>
 
+void UDS_SID14changeRequest(uint8 *para);
 
 
 #endif /* UDS_WMODEUSER_SID14_H_ */
